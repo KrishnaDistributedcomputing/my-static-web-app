@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Quiz Blog</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .nav-logo {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .featured-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .sidebar-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .sidebar-article {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="logo_url" alt="Logo" class="nav-logo">
+        Build5Nines
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Cloud</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">DevOps</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">CI/CD</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">AI</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Certification</a></li>
+        </ul>
+        <button class="btn btn-primary" type="button">Subscribe</button>
+    </div>
+</nav>
+
+<div class="container main-content">
+    <div class="row">
+        <!-- Featured Article Section -->
+        <div class="col-md-8">
+            <div class="featured-article mb-4">
+                <img src="featured_article_image_url" alt="Featured Article Image">
+                <h2>Terraform Lookup Function – Usage and Examples</h2>
+                <p><small>May 31, 2024</small></p>
+                <p>The Terraform lookup() function provides a powerful feature that can be used to implement more flexible and easily configurable infrastructure configurations...</p>
+            </div>
+        </div>
+        <!-- Sidebar Section -->
+        <div class="col-md-4">
+            <h4>Recent Articles</h4>
+            <div class="sidebar-article">
+                <img src="article_image_url" alt="Article Image">
+                <h5>Microsoft Copilot Internal Architecture Explained</h5>
+                <p><small>May 24, 2024</small></p>
+            </div>
+            <div class="sidebar-article">
+                <img src="article_image_url" alt="Article Image">
+                <h5>TLDR: Microsoft Build 2024 Keynote with Satya Nadella</h5>
+                <p><small>May 23, 2024</small></p>
+            </div>
+            <div class="sidebar-article">
+                <img src="article_image_url" alt="Article Image">
+                <h5>Terraform: Output URL to Azure Portal for Azure Resources</h5>
+                <p><small>May 22, 2024</small></p>
+            </div>
+            <div class="sidebar-article">
+                <img src="article_image_url" alt="Article Image">
+                <h5>Microsoft Certified: Azure Fundamentals Certification (AZ-900 Exam)</h5>
+                <p><small>May 21, 2024</small></p>
+            </div>
+            <div class="sidebar-article">
+                <img src="article_image_url" alt="Article Image">
+                <h5>GitHub Certifications – Prove Your Expertise</h5>
+                <p><small>May 20, 2024</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

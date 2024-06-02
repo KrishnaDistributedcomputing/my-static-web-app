@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure API Management Quiz</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure API Management Quiz</h4>
+            <div>
+                <i id="share" class="fab fa-linkedin share-icon"></i> Share it on LinkedIn
+            </div>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="API Gateway">
+                <label>1. Which feature in Azure API Management acts as a facade to backend services, enabling consistent configuration of routing, security, and observability?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Gateway">API Gateway</option>
+                    <option value="Developer Portal">Developer Portal</option>
+                    <option value="Management Plane">Management Plane</option>
+                    <option value="Self-hosted Gateway">Self-hosted Gateway</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Management Plane">
+                <label>2. Which component in Azure API Management provides full access to all service capabilities through Azure tools like the portal, CLI, and SDKs?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Gateway">API Gateway</option>
+                    <option value="Developer Portal">Developer Portal</option>
+                    <option value="Management Plane">Management Plane</option>
+                    <option value="Self-hosted Gateway">Self-hosted Gateway</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Developer Portal">
+                <label>3. Which feature in Azure API Management is a customizable, open-source portal for API discovery, onboarding, and consumption by developers?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Gateway">API Gateway</option>
+                    <option value="Developer Portal">Developer Portal</option>
+                    <option value="Management Plane">Management Plane</option>
+                    <option value="Self-hosted Gateway">Self-hosted Gateway</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="API Policies">
+                <label>4. Which feature in Azure API Management defines API behavior, such as transformation, security, and rate limiting, and can be applied at various scopes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Gateway">API Gateway</option>
+                    <option value="Developer Portal">Developer Portal</option>
+                    <option value="API Policies">API Policies</option>
+                    <option value="API Products">API Products</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="API Products">
+                <label>5. Which feature in Azure API Management bundles APIs available to specified groups for self-service onboarding under a single access credential?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Gateway">API Gateway</option>
+                    <option value="Developer Portal">Developer Portal</option>
+                    <option value="API Policies">API Policies</option>
+                    <option value="API Products">API Products</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="API Operations">
+                <label>6. Which feature in Azure API Management defines interactions with backend services using combinations of HTTP verbs and URL templates?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Operations">API Operations</option>
+                    <option value="API Products">API Products</option>
+                    <option value="API Policies">API Policies</option>
+                    <option value="API Gateway">API Gateway</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="API Versions">
+                <label>7. Which feature in Azure API Management allows safe implementation of changes by providing variants of APIs that differ in shape or behavior?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Operations">API Operations</option>
+                    <option value="API Products">API Products</option>
+                    <option value="API Versions">API Versions</option>
+                    <option value="API Gateway">API Gateway</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. Which feature in Azure API Management acts as a facade to backend services, enabling consistent configuration of routing, security, and observability?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-key-concepts',
+            '2. Which component in Azure API Management provides full access to all service capabilities through Azure tools like the portal, CLI, and SDKs?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-create-apis',
+            '3. Which feature in Azure API Management is a customizable, open-source portal for API discovery, onboarding, and consumption by developers?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-developer-portal',
+            '4. Which feature in Azure API Management defines API behavior, such as transformation, security, and rate limiting, and can be applied at various scopes?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-policies',
+            '5. Which feature in Azure API Management bundles APIs available to specified groups for self-service onboarding under a single access credential?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-create-group',
+            '6. Which feature in Azure API Management defines interactions with backend services using combinations of HTTP verbs and URL templates?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-add-operations',
+            '7. Which feature in Azure API Management allows safe implementation of changes by providing variants of APIs that differ in shape or behavior?': 'https://docs.microsoft.com/en-us/azure/api-management/api-management-get-started',
+        };
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectedOption = question.querySelector('select').value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.textContent = 'Correct!';
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => select.selectedIndex = 0);
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+</html>

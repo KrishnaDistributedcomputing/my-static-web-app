@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure API Management Quiz</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background-color: #007bff;
+            color: white;
+            border: 2px solid red;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure API Management Flashcard</h2>
+        <p>Test your knowledge about Azure API Management with these flashcards. Click on a card to reveal the answer. For more information, visit the following Azure Learn resources:</p>
+        <ul>
+            <li><a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts" target="_blank">Key Concepts in Azure API Management</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-create-api" target="_blank">Create an API Management Instance</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-developer-portal" target="_blank">Customize the Developer Portal</a></li>
+        </ul>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>API Gateway</p>
+                        </div>
+                        <div class="back">
+                            <p>Acts as a facade to backend services, enabling consistent configuration of routing, security, and observability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>Management Plane</p>
+                        </div>
+                        <div class="back">
+                            <p>Provides full access to API Management service capabilities through Azure tools like the portal, CLI, and SDKs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>Developer Portal</p>
+                        </div>
+                        <div class="back">
+                            <p>Customizable, open-source portal for API discovery, onboarding, and consumption by developers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>API Policies</p>
+                        </div>
+                        <div class="back">
+                            <p>Rules that define API behavior, such as transformation, security, and rate limiting, applied at various scopes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>API Products</p>
+                        </div>
+                        <div class="back">
+                            <p>Bundles of APIs available to specified groups for self-service onboarding under a single access credential.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>API Operations</p>
+                        </div>
+                        <div class="back">
+                            <p>Combinations of HTTP verbs and URL templates, defining interactions with backend services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>API Versions</p>
+                        </div>
+                        <div class="back">
+                            <p>Variants of APIs that differ in shape or behavior, allowing safe implementation of changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>Self-hosted Gateway</p>
+                        </div>
+                        <div class="back">
+                            <p>Allows API Management gateway to be deployed in hybrid and multicloud environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>Quota and Rate Limiting</p>
+                        </div>
+                        <div class="back">
+                            <p>Policies to control the number of API calls a developer can make over a time period.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>API Analytics</p>
+                        </div>
+                        <div class="back">
+                            <p>Provides insights into API usage, performance, and errors through Azure Monitor and Application Insights.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>API Security</p>
+                        </div>
+                        <div class="back">
+                            <p>Implements security measures such as OAuth 2.0, JWT validation, and client certificate authentication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>API Gateway Caching</p>
+                        </div>
+                        <div class="back">
+                            <p>Improves response times and reduces backend load by caching API responses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>Custom Domains</p>
+                        </div>
+                        <div class="back">
+                            <p>Allows the use of custom domain names for the API Management gateway and developer portal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>Backend API</p>
+                        </div>
+                        <div class="back">
+                            <p>Service that implements the API and its operations, usually HTTP-based.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>Developer Groups</p>
+                        </div>
+                        <div class="back">
+                            <p>Manage visibility and access to API products for different developer groups.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>APIs</p>
+                        </div>
+                        <div class="back">
+                            <p>Frontend APIs exposed to consumers, customizable without changing backend services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>Hybrid and Multicloud Management</p>
+                        </div>
+                        <div class="back">
+                            <p>Supports API management across different environments, including on-premises and multiple clouds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>GraphQL and WebSocket</p>
+                        </div>
+                        <div class="back">
+                            <p>Support for managing and securing GraphQL APIs and WebSocket connections.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>API Mocking</p>
+                        </div>
+                        <div class="back">
+                            <p>Enables simulation of API responses to facilitate testing and development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>API Versioning</p>
+                        </div>
+                        <div class="back">
+                            <p>Allows creating different versions of an API to safely implement changes and updates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(21)">
+                    <div class="flashcard" id="flashcard21">
+                        <div class="front">
+                            <p>Workspaces</p>
+                        </div>
+                        <div class="back">
+                            <p>Allows decentralized API development teams to manage and productize their own APIs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(22)">
+                    <div class="flashcard" id="flashcard22">
+                        <div class="front">
+                            <p>API Authentication</p>
+                        </div>
+                        <div class="back">
+                            <p>Supports multiple authentication mechanisms, including OAuth 2.0, JWT, and client certificates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(23)">
+                    <div class="flashcard" id="flashcard23">
+                        <div class="front">
+                            <p>Analytics and Monitoring</p>
+                        </div>
+                        <div class="back">
+                            <p>Integrates with Azure Monitor and Application Insights for detailed analytics and monitoring.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(24)">
+                    <div class="flashcard" id="flashcard24">
+                        <div class="front">
+                            <p>API Transformation</p>
+                        </div>
+                        <div class="back">
+                            <p>Transforms requests and responses as specified in policy statements, such as format conversion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>

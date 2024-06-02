@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure RBAC Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure RBAC Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="Azure Resource Manager">
+                <label>1. Which service enforces Azure RBAC at a management group, subscription, resource group, or resource level?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Active Directory">Azure Active Directory</option>
+                    <option value="Azure Resource Manager">Azure Resource Manager</option>
+                    <option value="Azure Policy">Azure Policy</option>
+                    <option value="Azure Monitor">Azure Monitor</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Owner">
+                <label>2. Which built-in role allows full access to all resources, including the ability to delegate access to others?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Reader">Reader</option>
+                    <option value="Contributor">Contributor</option>
+                    <option value="Owner">Owner</option>
+                    <option value="User Access Administrator">User Access Administrator</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Reader">
+                <label>3. Which built-in role allows viewing of all resources but does not allow any changes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Reader">Reader</option>
+                    <option value="Contributor">Contributor</option>
+                    <option value="Owner">Owner</option>
+                    <option value="User Access Administrator">User Access Administrator</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Role Definition">
+                <label>4. What term is used for a collection of permissions in Azure RBAC?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Role Assignment">Role Assignment</option>
+                    <option value="Role Definition">Role Definition</option>
+                    <option value="Scope">Scope</option>
+                    <option value="Principal">Principal</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Scope">
+                <label>5. What term describes the set of resources that the access applies to?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Role Assignment">Role Assignment</option>
+                    <option value="Role Definition">Role Definition</option>
+                    <option value="Scope">Scope</option>
+                    <option value="Principal">Principal</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Azure Active Directory">
+                <label>6. Which service provides the identity used for role assignments?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Active Directory">Azure Active Directory</option>
+                    <option value="Azure Resource Manager">Azure Resource Manager</option>
+                    <option value="Azure Policy">Azure Policy</option>
+                    <option value="Azure Monitor">Azure Monitor</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Role Assignment">
+                <label>7. What term is used for assigning a role to a user, group, service principal, or managed identity?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Role Assignment">Role Assignment</option>
+                    <option value="Role Definition">Role Definition</option>
+                    <option value="Scope">Scope</option>
+                    <option value="Principal">Principal</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Principal">
+                <label>8. What term describes the security principal that requests access to Azure resources?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Role Assignment">Role Assignment</option>
+                    <option value="Role Definition">Role Definition</option>
+                    <option value="Scope">Scope</option>
+                    <option value="Principal">Principal</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. Which service enforces Azure RBAC at a management group, subscription, resource group, or resource level?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '2. Which built-in role allows full access to all resources, including the ability to delegate access to others?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '3. Which built-in role allows viewing of all resources but does not allow any changes?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '4. What term is used for a collection of permissions in Azure RBAC?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '5. What term describes the set of resources that the access applies to?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '6. Which service provides the identity used for role assignments?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '7. What term is used for assigning a role to a user, group, service principal, or managed identity?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+            '8. What term describes the security principal that requests access to Azure resources?': 'https://learn.microsoft.com/en-us/azure/role-based-access-control/overview',
+        };
+
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
