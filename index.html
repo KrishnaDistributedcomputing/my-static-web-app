@@ -3,10 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummy HTML Page</title>
+    <title>Azure KT</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .bg {
+            background-image: url('https://source.unsplash.com/1600x900/?cloud,technology');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .content h1 {
+            font-size: 4rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, Azure!</h1>
-    <p>This is a dummy HTML page for testing Azure Static Web Apps deployment.</p>
+    <div class="bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 content">
+                    <div>
+                        <h1>Welcome to Azure KT</h1>
+                        <p class="lead">Your go-to resource for all things Azure</p>
+                        <a href="https://azurekt.com/blog" class="btn btn-primary btn-lg">Visit our Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
