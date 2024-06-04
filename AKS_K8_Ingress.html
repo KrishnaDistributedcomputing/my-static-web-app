@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Ingress Controller in Azure Kubernetes Service Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .correct-answer {
+            color: green;
+        }
+        .incorrect-answer {
+            color: red;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+        .collapse {
+            display: none;
+        }
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Ingress Controllers: Kubernetes Traffic Management Quiz</h4>
+ 
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="Ingress">
+                <label>1. What Kubernetes resource allows you to configure how external traffic is routed to services within the cluster?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Service">Service</option>
+                    <option value="Ingress">Ingress</option>
+                    <option value="Pod">Pod</option>
+                    <option value="Deployment">Deployment</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Ingress Controller">
+                <label>2. What component manages the Ingress resources and implements the routing rules?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="API Server">API Server</option>
+                    <option value="Ingress Controller">Ingress Controller</option>
+                    <option value="Kubelet">Kubelet</option>
+                    <option value="Scheduler">Scheduler</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="NGINX">
+                <label>3. Which of the following is a popular Ingress Controller for Kubernetes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Envoy">Envoy</option>
+                    <option value="NGINX">NGINX</option>
+                    <option value="Prometheus">Prometheus</option>
+                    <option value="Grafana">Grafana</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Path-based routing">
+                <label>4. Which routing mechanism is commonly used in Ingress to route traffic to different services based on URL paths?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="IP-based routing">IP-based routing</option>
+                    <option value="Port-based routing">Port-based routing</option>
+                    <option value="Path-based routing">Path-based routing</option>
+                    <option value="Protocol-based routing">Protocol-based routing</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Yes">
+                <label>5. Can an Ingress resource handle SSL/TLS termination?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Multiple applications sharing a single IP">
+                <label>6. What is a key benefit of using an Ingress Controller in Kubernetes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Simplified pod scheduling">Simplified pod scheduling</option>
+                    <option value="Multiple applications sharing a single IP">Multiple applications sharing a single IP</option>
+                    <option value="Automatic scaling of applications">Automatic scaling of applications</option>
+                    <option value="Enhanced storage management">Enhanced storage management</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Ingress rules">
+                <label>7. What do you define in an Ingress resource to specify how traffic should be routed?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Node selectors">Node selectors</option>
+                    <option value="Ingress rules">Ingress rules</option>
+                    <option value="Tolerations">Tolerations</option>
+                    <option value="ConfigMaps">ConfigMaps</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="HTTP and HTTPS">
+                <label>8. Which protocols are typically supported by an Ingress resource?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="TCP and UDP">TCP and UDP</option>
+                    <option value="HTTP and HTTPS">HTTP and HTTPS</option>
+                    <option value="FTP and SFTP">FTP and SFTP</option>
+                    <option value="SMTP and IMAP">SMTP and IMAP</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. What Kubernetes resource allows you to configure how external traffic is routed to services within the cluster?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/',
+            '2. What component manages the Ingress resources and implements the routing rules?': 'https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/',
+            '3. Which of the following is a popular Ingress Controller for Kubernetes?': 'https://kubernetes.github.io/ingress-nginx/',
+            '4. Which routing mechanism is commonly used in Ingress to route traffic to different services based on URL paths?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules',
+            '5. Can an Ingress resource handle SSL/TLS termination?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#tls',
+            '6. What is a key benefit of using an Ingress Controller in Kubernetes?': 'https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/',
+            '7. What do you define in an Ingress resource to specify how traffic should be routed?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules',
+            '8. Which protocols are typically supported by an Ingress resource?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/',
+        };
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectedOption = question.querySelector('select').value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.textContent = 'Correct!';
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => select.selectedIndex = 0);
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Kubernetes%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
