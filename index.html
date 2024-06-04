@@ -3,50 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azure KT</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Azure KT Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
             margin: 0;
-        }
-        .bg {
-            background-image: url('https://source.unsplash.com/1600x900/?cloud,technology');
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .content {
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            color: white;
+            background-color: #f8f9fa;
+            flex-direction: column;
         }
-        .content h1 {
-            font-size: 4rem;
+        .navbar {
+            width: 100%;
+            background-color: #007bff;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .search-container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .search-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .search-results {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .result-group {
+            margin-bottom: 30px;
+        }
+        .result-group h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .result-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .result-items a {
+            padding: 15px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            flex: 1 0 30%;
+            margin: 5px;
+        }
+        .result-items a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="bg">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <div class="row">
-                <div class="col-12 content">
-                    <div>
-                        <h1>Welcome to Azure KT</h1>
-                        <p class="lead">Your go-to resource for all things Azure</p>
-                        <a href="https://azurekt.com/blog" class="btn btn-primary btn-lg">Visit our Blog</a>
-                    </div>
-                </div>
+            <a class="navbar-brand" href="#">Azure KT Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://learn.microsoft.com/en-us/training/">Microsoft Learn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="search-container">
+        <h1>Search Quizzes and Flashcards</h1>
+        <input type="text" id="searchInput" class="search-box" placeholder="Type to search...">
+        <div id="searchResults" class="search-results">
+            <div class="result-group">
+                <h2>Quizzes</h2>
+                <div id="quizResults" class="result-items"></div>
+            </div>
+            <div class="result-group">
+                <h2>Flashcards</h2>
+                <div id="flashcardResults" class="result-items"></div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const data = [
+            { title: 'AKS K8 Ingress', url: 'https://www.azurekt.com/AKS_K8_Ingress.html', type: 'quiz' },
+            { title: 'Azure App Service Quiz', url: 'https://www.azurekt.com/Azure%20App%20Service%20Quiz.html', type: 'quiz' },
+            { title: 'Azure Container Instances Quiz', url: 'https://www.azurekt.com/Azure%20Container%20Instances%20Quiz.html', type: 'quiz' },
+            { title: 'Azure API', url: 'https://www.azurekt.com/Azure_API.html', type: 'quiz' },
+            { title: 'Azure API Quiz', url: 'https://www.azurekt.com/Azure_API_Quiz.html', type: 'quiz' },
+            { title: 'Azure DNS', url: 'https://www.azurekt.com/Azure_DNS.html', type: 'quiz' },
+            { title: 'Azure RBAC Quiz', url: 'https://www.azurekt.com/Azure_RBAC_Quiz.html', type: 'quiz' },
+            { title: 'AKS Flashcards', url: 'https://www.azurekt.com/aksFlashcards.html', type: 'flashcard' },
+            { title: 'Azure Storage Account Replication Flashcards', url: 'https://www.azurekt.com/azure-storage-account-replication-flashcards.html', type: 'flashcard' },
+            { title: 'Azure Storage Account Replication Quiz', url: 'https://www.azurekt.com/azure-storage-account-replication-quiz.html', type: 'quiz' },
+            { title: 'Azure AKS', url: 'https://www.azurekt.com/azureaks.html', type: 'quiz' }
+        ];
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const quizResults = data.filter(item => item.type === 'quiz' && item.title.toLowerCase().includes(query));
+            const flashcardResults = data.filter(item => item.type === 'flashcard' && item.title.toLowerCase().includes(query));
+            displayResults(quizResults, 'quizResults');
+            displayResults(flashcardResults, 'flashcardResults');
+        });
+
+        function displayResults(results, elementId) {
+            const resultsContainer = document.getElementById(elementId);
+            resultsContainer.innerHTML = '';
+            results.forEach(item => {
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.textContent = item.title;
+                resultsContainer.appendChild(a);
+            });
+        }
+
+        // Display all results by default
+        const quizResults = data.filter(item => item.type === 'quiz');
+        const flashcardResults = data.filter(item => item.type === 'flashcard');
+        displayResults(quizResults, 'quizResults');
+        displayResults(flashcardResults, 'flashcardResults');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
