@@ -14,7 +14,6 @@
             align-items: center;
             background-color: #f8f9fa;
             flex-direction: column;
-            font-size: 1rem;
         }
         .navbar {
             width: 100%;
@@ -25,7 +24,7 @@
         }
         .search-container {
             text-align: center;
-            width: 90%;
+            width: 100%;
             max-width: 800px;
             padding: 20px;
             background-color: white;
@@ -34,14 +33,14 @@
             margin-top: 20px;
         }
         .search-container h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: #007bff;
         }
         .search-box {
             width: 100%;
-            padding: 10px;
-            font-size: 1rem;
+            padding: 15px 20px;
+            font-size: 1.5rem;
             border: 2px solid #007bff;
             border-radius: 5px;
             margin-bottom: 20px;
@@ -54,38 +53,39 @@
             margin-bottom: 30px;
         }
         .result-group h2 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
             color: #007bff;
         }
         .result-items {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
         .result-items a {
-            padding: 10px;
-            font-size: 1rem;
+            padding: 15px;
+            font-size: 1.25rem;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
             color: white;
             background-color: #007bff;
             border-radius: 5px;
+            flex: 1 0 30%;
+            margin: 5px;
         }
         .result-items a:hover {
             background-color: #0056b3;
         }
-        @media (min-width: 768px) {
-            .result-items {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-around;
-            }
-            .result-items a {
-                flex: 1 0 30%;
-                margin: 5px;
-            }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
@@ -119,6 +119,9 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <p>Azure KT Portal - Version 1.0.0</p>
+    </footer>
 
     <script>
         const data = [
