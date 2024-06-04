@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Azure Container Instances Quiz</title>
+    <title>Ingress Controller in Azure Kubernetes Service Quiz</title>
     <style>
         body {
             display: flex;
@@ -98,95 +98,93 @@
 <body>
     <div class="quiz-container">
         <div class="header">
-            <h4>Azure Container Instances Quiz</h4>
-
+            <h4>Ingress Controllers: Kubernetes Traffic Management Quiz</h4>
+ 
         </div>
         <form id="quizForm">
-            <div class="question" data-answer="Serverless container platform">
-                <label>1. What type of platform is Azure Container Instances?</label>
+            <div class="question" data-answer="Ingress">
+                <label>1. What Kubernetes resource allows you to configure how external traffic is routed to services within the cluster?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Virtual machine service">Virtual machine service</option>
-                    <option value="Serverless container platform">Serverless container platform</option>
-                    <option value="Database management service">Database management service</option>
-                    <option value="Storage solution">Storage solution</option>
+                    <option value="Service">Service</option>
+                    <option value="Ingress">Ingress</option>
+                    <option value="Pod">Pod</option>
+                    <option value="Deployment">Deployment</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="CPU and Memory">
-                <label>2. When creating an ACI instance, which two resources must you specify?</label>
+            <div class="question" data-answer="Ingress Controller">
+                <label>2. What component manages the Ingress resources and implements the routing rules?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Storage and Network">Storage and Network</option>
-                    <option value="CPU and Memory">CPU and Memory</option>
-                    <option value="Disk space and IOPS">Disk space and IOPS</option>
-                    <option value="Bandwidth and Latency">Bandwidth and Latency</option>
+                    <option value="API Server">API Server</option>
+                    <option value="Ingress Controller">Ingress Controller</option>
+                    <option value="Kubelet">Kubelet</option>
+                    <option value="Scheduler">Scheduler</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Container group">
-                <label>3. What is a collection of containers that share the same lifecycle and resources called in ACI?</label>
+            <div class="question" data-answer="NGINX">
+                <label>3. Which of the following is a popular Ingress Controller for Kubernetes?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Container cluster">Container cluster</option>
-                    <option value="Pod group">Pod group</option>
-                    <option value="Container group">Container group</option>
-                    <option value="Service group">Service group</option>
+                    <option value="Envoy">Envoy</option>
+                    <option value="NGINX">NGINX</option>
+                    <option value="Prometheus">Prometheus</option>
+                    <option value="Grafana">Grafana</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Azure file share">
-                <label>4. Which of the following is a supported external volume for container groups in ACI?</label>
+            <div class="question" data-answer="Path-based routing">
+                <label>4. Which routing mechanism is commonly used in Ingress to route traffic to different services based on URL paths?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Azure file share">Azure file share</option>
-                    <option value="Local disk">Local disk</option>
-                    <option value="External hard drive">External hard drive</option>
-                    <option value="Network attached storage">Network attached storage</option>
+                    <option value="IP-based routing">IP-based routing</option>
+                    <option value="Port-based routing">Port-based routing</option>
+                    <option value="Path-based routing">Path-based routing</option>
+                    <option value="Protocol-based routing">Protocol-based routing</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Azure Portal, Azure CLI, and VS Code">
-                <label>5. Which methods can be used to deploy container images in ACI?</label>
+            <div class="question" data-answer="Yes">
+                <label>5. Can an Ingress resource handle SSL/TLS termination?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Azure Portal, Azure CLI, and VS Code">Azure Portal, Azure CLI, and VS Code</option>
-                    <option value="Azure Portal, Azure CLI, and FTP">Azure Portal, Azure CLI, and FTP</option>
-                    <option value="Azure Portal, FTP, and VS Code">Azure Portal, FTP, and VS Code</option>
-                    <option value="Azure CLI, FTP, and VS Code">Azure CLI, FTP, and VS Code</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Event-driven applications">
-                <label>6. Which of the following is a suitable use case for ACI?</label>
+            <div class="question" data-answer="Multiple applications sharing a single IP">
+                <label>6. What is a key benefit of using an Ingress Controller in Kubernetes?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Long-term storage">Long-term storage</option>
-                    <option value="Event-driven applications">Event-driven applications</option>
-                    <option value="Heavy data processing">Heavy data processing</option>
-                    <option value="Persistent stateful applications">Persistent stateful applications</option>
+                    <option value="Simplified pod scheduling">Simplified pod scheduling</option>
+                    <option value="Multiple applications sharing a single IP">Multiple applications sharing a single IP</option>
+                    <option value="Automatic scaling of applications">Automatic scaling of applications</option>
+                    <option value="Enhanced storage management">Enhanced storage management</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Define rules for auto-scaling">
-                <label>7. How can you manage the scaling of container instances in ACI?</label>
+            <div class="question" data-answer="Ingress rules">
+                <label>7. What do you define in an Ingress resource to specify how traffic should be routed?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Manually add instances">Manually add instances</option>
-                    <option value="Define rules for auto-scaling">Define rules for auto-scaling</option>
-                    <option value="Increase CPU cores only">Increase CPU cores only</option>
-                    <option value="Allocate more memory only">Allocate more memory only</option>
+                    <option value="Node selectors">Node selectors</option>
+                    <option value="Ingress rules">Ingress rules</option>
+                    <option value="Tolerations">Tolerations</option>
+                    <option value="ConfigMaps">ConfigMaps</option>
                 </select>
                 <p class="feedback"></p>
             </div>
-            <div class="question" data-answer="Shared IP address and DNS label">
-                <label>8. What networking feature do container groups in ACI share?</label>
+            <div class="question" data-answer="HTTP and HTTPS">
+                <label>8. Which protocols are typically supported by an Ingress resource?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="Separate IP addresses">Separate IP addresses</option>
-                    <option value="Dynamic DNS labels">Dynamic DNS labels</option>
-                    <option value="Shared IP address and DNS label">Shared IP address and DNS label</option>
-                    <option value="Multiple subnets">Multiple subnets</option>
+                    <option value="TCP and UDP">TCP and UDP</option>
+                    <option value="HTTP and HTTPS">HTTP and HTTPS</option>
+                    <option value="FTP and SFTP">FTP and SFTP</option>
+                    <option value="SMTP and IMAP">SMTP and IMAP</option>
                 </select>
                 <p class="feedback"></p>
             </div>
@@ -199,14 +197,14 @@
     </div>
     <script>
         const learnLinks = {
-            '1. What type of platform is Azure Container Instances?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview',
-            '2. When creating an ACI instance, which two resources must you specify?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview',
-            '3. What is a collection of containers that share the same lifecycle and resources called in ACI?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview',
-            '4. Which of the following is a supported external volume for container groups in ACI?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-region-availability',
-            '5. Which methods can be used to deploy container images in ACI?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-region-availability',
-            '6. Which of the following is a suitable use case for ACI?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview',
-            '7. How can you manage the scaling of container instances in ACI?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-scaling',
-            '8. What networking feature do container groups in ACI share?': 'https://learn.microsoft.com/en-us/azure/container-instances/container-instances-networking',
+            '1. What Kubernetes resource allows you to configure how external traffic is routed to services within the cluster?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/',
+            '2. What component manages the Ingress resources and implements the routing rules?': 'https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/',
+            '3. Which of the following is a popular Ingress Controller for Kubernetes?': 'https://kubernetes.github.io/ingress-nginx/',
+            '4. Which routing mechanism is commonly used in Ingress to route traffic to different services based on URL paths?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules',
+            '5. Can an Ingress resource handle SSL/TLS termination?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#tls',
+            '6. What is a key benefit of using an Ingress Controller in Kubernetes?': 'https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/',
+            '7. What do you define in an Ingress resource to specify how traffic should be routed?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules',
+            '8. Which protocols are typically supported by an Ingress resource?': 'https://kubernetes.io/docs/concepts/services-networking/ingress/',
         };
 
         document.getElementById('submit').addEventListener('click', function () {
@@ -254,7 +252,7 @@
 
         document.getElementById('share').addEventListener('click', function () {
             const resultText = document.getElementById('result').textContent;
-            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Kubernetes%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
             window.open(linkedInUrl, '_blank');
         });
     </script>
