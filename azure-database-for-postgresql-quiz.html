@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Database for PostgreSQL Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .correct-answer {
+            color: green;
+        }
+        .incorrect-answer {
+            color: red;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+        .collapse {
+            display: none;
+        }
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Database for PostgreSQL Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="Flexible Server and Single Server">
+                <label>1. What are the two deployment options for Azure Database for PostgreSQL?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Virtual Machines and Containers">Virtual Machines and Containers</option>
+                    <option value="Flexible Server and Single Server">Flexible Server and Single Server</option>
+                    <option value="Managed Instances and Bare Metal">Managed Instances and Bare Metal</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Automatic backups and point-in-time restore">
+                <label>2. What feature of Azure Database for PostgreSQL ensures data protection and disaster recovery?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Manual backups only">Manual backups only</option>
+                    <option value="Automatic backups and point-in-time restore">Automatic backups and point-in-time restore</option>
+                    <option value="Data encryption">Data encryption</option>
+                    <option value="Multi-region replication">Multi-region replication</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Built-in high availability">
+                <label>3. What feature of Azure Database for PostgreSQL helps minimize downtime?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Manual failover">Manual failover</option>
+                    <option value="Scheduled maintenance windows">Scheduled maintenance windows</option>
+                    <option value="Built-in high availability">Built-in high availability</option>
+                    <option value="Backup restoration">Backup restoration</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="VNet service endpoints and private links">
+                <label>4. What networking options are available for securely connecting to Azure Database for PostgreSQL?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="VNet service endpoints and private links">VNet service endpoints and private links</option>
+                    <option value="Public IP only">Public IP only</option>
+                    <option value="VPN and RDP">VPN and RDP</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Scale compute and storage independently">
+                <label>5. What scaling options are provided by Azure Database for PostgreSQL?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Scale compute only">Scale compute only</option>
+                    <option value="Scale storage only">Scale storage only</option>
+                    <option value="Scale compute and storage independently">Scale compute and storage independently</option>
+                    <option value="No scaling options">No scaling options</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="PostgreSQL community version">
+                <label>6. Which version of PostgreSQL does Azure Database for PostgreSQL support?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Proprietary version">Proprietary version</option>
+                    <option value="PostgreSQL community version">PostgreSQL community version</option>
+                    <option value="Azure proprietary version">Azure proprietary version</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Monitoring and performance optimization">
+                <label>7. What features does Azure Database for PostgreSQL provide for database management and optimization?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Manual monitoring only">Manual monitoring only</option>
+                    <option value="Automated performance tuning">Automated performance tuning</option>
+                    <option value="Monitoring and performance optimization">Monitoring and performance optimization</option>
+                    <option value="Backup and restore">Backup and restore</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Automated patching and maintenance">
+                <label>8. What ensures that the database is always running the latest updates in Azure Database for PostgreSQL?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Manual updates">Manual updates</option>
+                    <option value="Automated patching and maintenance">Automated patching and maintenance</option>
+                    <option value="Scheduled downtime for updates">Scheduled downtime for updates</option>
+                    <option value="User-initiated updates">User-initiated updates</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. What are the two deployment options for Azure Database for PostgreSQL?': 'https://learn.microsoft.com/en-us/azure/postgresql/',
+            '2. What feature of Azure Database for PostgreSQL ensures data protection and disaster recovery?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-backup',
+            '3. What feature of Azure Database for PostgreSQL helps minimize downtime?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-high-availability',
+            '4. What networking options are available for securely connecting to Azure Database for PostgreSQL?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-networking',
+            '5. What scaling options are provided by Azure Database for PostgreSQL?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-scalability',
+            '6. Which version of PostgreSQL does Azure Database for PostgreSQL support?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-supported-versions',
+            '7. What features does Azure Database for PostgreSQL provide for database management and optimization?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-monitoring',
+            '8. What ensures that the database is always running the latest updates in Azure Database for PostgreSQL?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-patching',
+        };
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectedOption = question.querySelector('select').value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.textContent = 'Correct!';
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => select.selectedIndex = 0);
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
