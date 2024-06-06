@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
         }
+
         .quiz-container {
             background: white;
             padding: 15px;
@@ -28,12 +30,14 @@
             flex-direction: column;
             overflow-y: auto;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
+
         h4 {
             color: #333;
             text-align: center;
@@ -41,14 +45,17 @@
             margin: 0;
             flex: 1;
         }
+
         .question {
             margin-bottom: 15px;
             width: 100%;
         }
+
         .question label {
             display: block;
             margin-bottom: 5px;
         }
+
         .form-control {
             width: 100%;
             font-size: 0.75rem;
@@ -56,45 +63,55 @@
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .correct-answer {
             color: green;
         }
+
         .incorrect-answer {
             color: red;
         }
+
         .btn-container {
             display: flex;
             justify-content: flex-start;
             width: 100%;
             margin-top: 15px;
         }
+
         .share-icon {
             font-size: 1.5rem;
             color: #0077B5;
             cursor: pointer;
             margin-right: 5px;
         }
+
         .feedback {
             margin-top: 5px;
             display: flex;
             align-items: center;
         }
+
         .feedback a {
             margin-left: 10px;
             font-size: 0.75rem;
         }
+
         .btn-sm {
             font-size: 0.75rem;
             padding: 5px 10px;
         }
+
         .collapse {
             display: none;
         }
+
         .collapse.show {
             display: block;
         }
     </style>
 </head>
+
 <body>
     <div class="quiz-container">
         <div class="header">
@@ -208,18 +225,36 @@
             '8. What ensures that the database is always running the latest updates in Azure Database for PostgreSQL?': 'https://learn.microsoft.com/en-us/azure/postgresql/concepts-patching',
         };
 
-        document.getElementById('submit').addEventListener('click', function () {
+        const showQuestions = () => {
             const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
             let score = 0;
 
             questions.forEach((question) => {
-                const selectedOption = question.querySelector('select').value;
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
                 const correctAnswer = question.getAttribute('data-answer');
                 const feedback = question.querySelector('.feedback');
 
                 if (selectedOption === correctAnswer) {
                     score++;
-                    feedback.textContent = 'Correct!';
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
                     feedback.className = 'feedback correct-answer';
                 } else {
                     const learnMoreLink = learnLinks[question.querySelector('label').textContent];
@@ -233,6 +268,7 @@
                         collapseContent.classList.toggle('show');
                     });
                 }
+                selectElement.style.display = 'none';
             });
 
             document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
@@ -240,7 +276,10 @@
 
         document.getElementById('clear').addEventListener('click', function () {
             const selects = document.querySelectorAll('select');
-            selects.forEach(select => select.selectedIndex = 0);
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
             const feedbacks = document.querySelectorAll('.feedback');
             feedbacks.forEach(feedback => {
                 feedback.textContent = '';
@@ -258,4 +297,5 @@
         });
     </script>
 </body>
+
 </html>
