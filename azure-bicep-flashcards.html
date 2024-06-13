@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Resource Manager Bicep Knowledge</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background-color: #007bff;
+            color: white;
+            border: 2px solid red;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Resource Manager Bicep Flashcards</h2>
+        <p>Test your knowledge about Bicep with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Bicep?</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>Key advantage of Bicep over JSON</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep provides a more concise syntax and is easier to read compared to JSON.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>Bicep's support for Azure services</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep supports all resource types and API versions available in Azure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>Bicep's integration with development tools</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep integrates with Visual Studio Code and offers IntelliSense, syntax validation, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>Modularity in Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep allows code reuse by breaking it into modules that can be included in multiple files.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How to deploy Bicep files</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep files can be deployed using Azure CLI, Azure PowerShell, or directly from Visual Studio Code.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is 'What-if' deployment in Bicep?</p>
+                        </div>
+                        <div class="back">
+                            <p>'What-if' deployment allows you to preview changes before actually deploying the Bicep file.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>Benefits of using Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep offers simple syntax, code reuse, automatic dependency management, and no state files to manage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>How to manage dependencies in Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep automatically manages dependencies between resources based on resource references.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>Bicep and ARM template relationship</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep files are compiled to ARM templates during deployment, maintaining all capabilities of JSON.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>Resource declaration in Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>In Bicep, resources are declared using a simple, human-readable syntax.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>Bicep's deployment scopes</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep supports deploying resources at different scopes, such as resource groups, subscriptions, and management groups.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>Bicep's preview changes feature</p>
+                        </div>
+                        <div class="back">
+                            <p>The 'what-if' operation checks the current state of your environment and shows which resources will be created, updated, or deleted.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>Using parameters in Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Parameters in Bicep allow you to define values that can be passed in during deployment to customize resource properties.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>Bicep's support for existing resources</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep can reference existing resources without redeploying them using the 'existing' keyword.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>Bicep's integration with Azure Policy</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep integrates with Azure Policy to enforce compliance and governance policies during deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>Automatic dependency management</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep automatically manages the order of resource deployment based on dependencies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>Bicep's support for loops</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep supports looping constructs to deploy multiple instances of a resource using a concise syntax.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>Bicep's extensibility</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep can be extended with custom modules to encapsulate and reuse resource configurations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>Comparing Bicep and Terraform</p>
+                        </div>
+                        <div class="back">
+                            <p>Both Bicep and Terraform are used for infrastructure as code, but Bicep is specifically optimized for Azure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(21)">
+                    <div class="flashcard" id="flashcard21">
+                        <div class="front">
+                            <p>Bicep's support for decompiling ARM templates</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep can convert existing ARM JSON templates into Bicep code for easier management and updates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(22)">
+                    <div class="flashcard" id="flashcard22">
+                        <div class="front">
+                            <p>Visualizing Bicep deployments</p>
+                        </div>
+                        <div class="back">
+                            <p>The Bicep Visualizer in Visual Studio Code provides a graphical view of the resources and their dependencies in a Bicep file.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(23)">
+                    <div class="flashcard" id="flashcard23">
+                        <div class="front">
+                            <p>Output values in Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep allows you to define output values to return information about deployed resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(24)">
+                    <div class="flashcard" id="flashcard24">
+                        <div class="front">
+                            <p>Future of Bicep</p>
+                        </div>
+                        <div class="back">
+                            <p>Bicep continues to evolve with community feedback and aims to simplify Azure resource management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
