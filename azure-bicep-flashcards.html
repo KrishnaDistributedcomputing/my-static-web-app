@@ -20,11 +20,11 @@
 
         .flashcard-box {
             border: 1px solid #007bff;
-            padding: 10px;
-            margin: 10px;
+            padding: 5px;
+            margin: 5px;
             border-radius: 10px;
-            width: 200px;
-            height: 150px;
+            width: 150px;
+            height: 100px;
             cursor: pointer;
             perspective: 1000px;
             display: flex;
@@ -62,14 +62,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            padding: 10px;
+            padding: 5px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 10px;
             overflow: hidden;
         }
 
@@ -86,13 +86,24 @@
 
         .flashcard p {
             margin: 0;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         @media (max-width: 768px) {
             .flashcard-box {
-                width: 100%;
-                margin: 10px 0;
+                width: 100px;
+                height: 80px;
+                margin: 5px 2px;
+            }
+
+            .flashcard .front,
+            .flashcard .back {
+                padding: 2px;
+                font-size: 8px;
+            }
+
+            .flashcard p {
+                font-size: 8px;
             }
         }
     </style>
