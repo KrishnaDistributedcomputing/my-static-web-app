@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Resource Manager Bicep Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Resource Manager Bicep Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="Domain-specific language for deploying Azure resources">
+                <label>1. What is Bicep?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Scripting language for automating Azure tasks">Scripting language for automating Azure tasks</option>
+                    <option value="Domain-specific language for deploying Azure resources">Domain-specific language for deploying Azure resources</option>
+                    <option value="Tool for monitoring Azure resources">Tool for monitoring Azure resources</option>
+                    <option value="Service for managing Azure costs">Service for managing Azure costs</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="No previous knowledge of programming languages required">
+                <label>2. What is a benefit of using Bicep over JSON for ARM templates?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="More verbose syntax">More verbose syntax</option>
+                    <option value="No previous knowledge of programming languages required">No previous knowledge of programming languages required</option>
+                    <option value="Limited resource support">Limited resource support</option>
+                    <option value="Requires manual deployment steps">Requires manual deployment steps</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Consistent and repeatable deployments">
+                <label>3. What does Bicep provide that ensures the same resource types are deployed in the same state each time?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Interactive deployment mode">Interactive deployment mode</option>
+                    <option value="Manual resource configuration">Manual resource configuration</option>
+                    <option value="Consistent and repeatable deployments">Consistent and repeatable deployments</option>
+                    <option value="Dynamic resource updates">Dynamic resource updates</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Azure Policy">
+                <label>4. With which Azure service is Bicep integrated for policy enforcement?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Monitor">Azure Monitor</option>
+                    <option value="Azure Policy">Azure Policy</option>
+                    <option value="Azure Security Center">Azure Security Center</option>
+                    <option value="Azure Cost Management">Azure Cost Management</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Preview changes before deployment">
+                <label>5. What feature does Bicep offer to show changes before deploying?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Resource graph">Resource graph</option>
+                    <option value="What-if operation">What-if operation</option>
+                    <option value="Live deployment view">Live deployment view</option>
+                    <option value="Deployment logs">Deployment logs</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Modules">
+                <label>6. What can be used in Bicep to reuse code and simplify development?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Variables">Variables</option>
+                    <option value="Functions">Functions</option>
+                    <option value="Modules">Modules</option>
+                    <option value="Outputs">Outputs</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Parameters, Variables, Resources, Outputs">
+                <label>7. What are the main sections of a Bicep file?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Parameters, Functions, Resources, Outputs">Parameters, Functions, Resources, Outputs</option>
+                    <option value="Parameters, Variables, Resources, Outputs">Parameters, Variables, Resources, Outputs</option>
+                    <option value="Parameters, Resources, Outputs, Loops">Parameters, Resources, Outputs, Loops</option>
+                    <option value="Parameters, Variables, Outputs, Conditions">Parameters, Variables, Outputs, Conditions</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="No cost and open source">
+                <label>8. What is a key advantage of using Bicep?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Requires a subscription fee">Requires a subscription fee</option>
+                    <option value="Limited community support">Limited community support</option>
+                    <option value="No cost and open source">No cost and open source</option>
+                    <option value="Proprietary language">Proprietary language</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. What is Bicep?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+            '2. What is a benefit of using Bicep over JSON for ARM templates?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+            '3. What does Bicep provide that ensures the same resource types are deployed in the same state each time?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+            '4. With which Azure service is Bicep integrated for policy enforcement?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+            '5. What feature does Bicep offer to show changes before deploying?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/what-if',
+            '6. What can be used in Bicep to reuse code and simplify development?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules',
+            '7. What are the main sections of a Bicep file?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+            '8. What is a key advantage of using Bicep?': 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview',
+        };
+
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
