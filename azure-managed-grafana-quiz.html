@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Managed Grafana Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Managed Grafana Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="A data visualization platform built on top of Grafana software by Grafana Labs">
+                <label>1. What is Azure Managed Grafana?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="A data visualization platform built on top of Grafana software by Grafana Labs">A data visualization platform built on top of Grafana software by Grafana Labs</option>
+                    <option value="A monitoring tool exclusively for Azure services">A monitoring tool exclusively for Azure services</option>
+                    <option value="A service for managing Azure subscriptions">A service for managing Azure subscriptions</option>
+                    <option value="A backup solution for Azure databases">A backup solution for Azure databases</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="All of the above">
+                <label>2. Which feature is included in the Standard tier of Azure Managed Grafana but not in the Essential tier?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Private endpoints">Private endpoints</option>
+                    <option value="Alerting">Alerting</option>
+                    <option value="Zone redundancy">Zone redundancy</option>
+                    <option value="All of the above">All of the above</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Microsoft Entra ID">
+                <label>3. What does Azure Managed Grafana use for centralized identity management?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Active Directory">Azure Active Directory</option>
+                    <option value="Microsoft Entra ID">Microsoft Entra ID</option>
+                    <option value="Azure Identity Protection">Azure Identity Protection</option>
+                    <option value="Microsoft Security Center">Microsoft Security Center</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="GitHub">
+                <label>4. Which of the following is NOT a supported data source in the Essential (preview) tier of Azure Managed Grafana?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Monitor">Azure Monitor</option>
+                    <option value="Prometheus">Prometheus</option>
+                    <option value="GitHub">GitHub</option>
+                    <option value="TestData">TestData</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Server-side encryption with Service-Managed keys">
+                <label>5. What type of encryption is used by Azure Managed Grafana for data at rest and in transit?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Client-side encryption">Client-side encryption</option>
+                    <option value="Server-side encryption with Service-Managed keys">Server-side encryption with Service-Managed keys</option>
+                    <option value="User-managed encryption">User-managed encryption</option>
+                    <option value="Application-level encryption">Application-level encryption</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Standard tier includes zone redundancy">
+                <label>6. What is a key difference between the Essential and Standard tiers of Azure Managed Grafana in terms of reliability?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Essential tier offers SLA guarantees">Essential tier offers SLA guarantees</option>
+                    <option value="Standard tier includes zone redundancy">Standard tier includes zone redundancy</option>
+                    <option value="Essential tier supports disaster recovery">Essential tier supports disaster recovery</option>
+                    <option value="Standard tier has limited features">Standard tier has limited features</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Azure Policy">
+                <label>7. Which Azure service integration allows Azure Managed Grafana to enforce policy rules?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure Policy">Azure Policy</option>
+                    <option value="Azure Monitor">Azure Monitor</option>
+                    <option value="Azure Security Center">Azure Security Center</option>
+                    <option value="Azure Cost Management">Azure Cost Management</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Resource group Contributor role">
+                <label>8. What is required to create an Azure Managed Grafana workspace using the Azure CLI?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Azure portal access">Azure portal access</option>
+                    <option value="Resource group Contributor role">Resource group Contributor role</option>
+                    <option value="Owner role on the Azure subscription">Owner role on the Azure subscription</option>
+                    <option value="Administrator permissions in Microsoft Entra ID">Administrator permissions in Microsoft Entra ID</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. What is Azure Managed Grafana?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '2. Which feature is included in the Standard tier of Azure Managed Grafana but not in the Essential tier?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '3. What does Azure Managed Grafana use for centralized identity management?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '4. Which of the following is NOT a supported data source in the Essential (preview) tier of Azure Managed Grafana?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '5. What type of encryption is used by Azure Managed Grafana for data at rest and in transit?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '6. What is a key difference between the Essential and Standard tiers of Azure Managed Grafana in terms of reliability?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '7. Which Azure service integration allows Azure Managed Grafana to enforce policy rules?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+            '8. What is required to create an Azure Managed Grafana workspace using the Azure CLI?': 'https://learn.microsoft.com/en-us/azure/azure-monitor/',
+        };
+
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
