@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Monitor Knowledge</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 150px;
+            height: 100px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 10px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Monitor Knowledge Flashcards</h2>
+        <p>Test your knowledge about Azure Monitor with these flashcards. Click on a card to reveal the answer. For more information, visit the following Azure Learn resources:</p>
+        <ul>
+            <li><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/overview" target="_blank">Azure Monitor Overview</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/training/paths/monitor-usage-performance-availability-resources-azure-monitor/" target="_blank">Monitor usage, performance, and availability of resources with Azure Monitor</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/training/paths/analyze-monitoring-data-with-kql/" target="_blank">Analyze monitoring data with KQL</a></li>
+        </ul>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Monitor?</p>
+                        </div>
+                        <div class="back">
+                            <p>A comprehensive monitoring solution for collecting, analyzing, and responding to data from cloud and on-premises environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What types of data does Azure Monitor collect?</p>
+                        </div>
+                        <div class="back">
+                            <p>Metrics, logs, traces, and changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What is Azure Monitor Metrics?</p>
+                        </div>
+                        <div class="back">
+                            <p>A time-series database optimized for analyzing time-stamped data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is Azure Monitor Logs?</p>
+                        </div>
+                        <div class="back">
+                            <p>A service that collects and stores log data, allowing for querying and analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>How does Azure Monitor help with autoscaling?</p>
+                        </div>
+                        <div class="back">
+                            <p>By dynamically controlling the number of resources running to handle the load on your application.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What are some key features of Azure Monitor?</p>
+                        </div>
+                        <div class="back">
+                            <p>Alerts, dashboards, workbooks, and integrations with Power BI and Grafana.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>Can Azure Monitor integrate with third-party tools?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, it can integrate with other tools such as Event Hubs, Azure Storage, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What is Azure Monitor Application Insights?</p>
+                        </div>
+                        <div class="back">
+                            <p>A feature that monitors the availability, performance, and usage of your web applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What are Workbooks in Azure Monitor?</p>
+                        </div>
+                        <div class="back">
+                            <p>A flexible canvas for data analysis and the creation of rich visual reports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is the purpose of Azure Monitor Alerts?</p>
+                        </div>
+                        <div class="back">
+                            <p>To notify you of critical conditions and take corrective action.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What is Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>A data visualization platform built on top of Grafana software by Grafana Labs, fully managed by Microsoft.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What are the two service tiers available in Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>Essential (preview) and Standard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>What is the purpose of Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>To bring together metrics, logs, and traces into a single user interface for real-time analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What does Azure Managed Grafana integrate with?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Monitor, Azure Data Explorer, and other data sources.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>How does Azure Managed Grafana enhance security?</p>
+                        </div>
+                        <div class="back">
+                            <p>By using Microsoft Entra ID for user authentication and access control.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>Can you import existing charts to Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, you can import existing charts directly from the Azure portal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What is a key feature of Azure Managed Grafana's Standard tier?</p>
+                        </div>
+                        <div class="back">
+                            <p>High availability and SLA guarantees.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the purpose of Azure Managed Grafana's zone redundancy feature?</p>
+                        </div>
+                        <div class="back">
+                            <p>To provide better resilience by spreading VMs across availability zones.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What type of encryption does Azure Managed Grafana use?</p>
+                        </div>
+                        <div class="back">
+                            <p>Server-side encryption with service-managed keys.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>How can Azure Managed Grafana's managed private endpoint be used?</p>
+                        </div>
+                        <div class="back">
+                            <p>To connect to data sources privately and securely.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(21)">
+                    <div class="flashcard" id="flashcard21">
+                        <div class="front">
+                            <p>What are the core plugins supported in Azure Managed Grafana's Standard tier?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Monitor, Prometheus, Azure Data Explorer, GitHub, and JSON API.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(22)">
+                    <div class="flashcard" id="flashcard22">
+                        <div class="front">
+                            <p>What is the purpose of the managed private endpoint in Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>To connect securely to data sources using private links.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(23)">
+                    <div class="flashcard" id="flashcard23">
+                        <div class="front">
+                            <p>Can Azure Managed Grafana be used with Microsoft Entra groups?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, for user authentication and access control.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(24)">
+                    <div class="flashcard" id="flashcard24">
+                        <div class="front">
+                            <p>What type of identity management does Azure Managed Grafana use ?</p>
+                        </div>
+                        <div class="back">
+                            <p>System-assigned managed identity and Microsoft Entra ID.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(25)">
+                    <div class="flashcard" id="flashcard25">
+                        <div class="front">
+                            <p>What is the difference between the Essential and Standard tiers in Azure Managed Grafana?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Standard tier offers better performance, more features, and an SLA guarantee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
