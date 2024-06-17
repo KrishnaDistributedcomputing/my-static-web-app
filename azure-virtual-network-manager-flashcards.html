@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Virtual Network Manager Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px; /* Further increased width */
+            height: 200px; /* Further increased height */
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px; /* Further adjusted font size */
+            overflow: hidden;
+        }
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+        .flashcard p {
+            margin: 0;
+            font-size: 16px; /* Further adjusted font size */
+        }
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Virtual Network Manager Flashcards</h2>
+        <p>Test your knowledge about Azure Virtual Network Manager with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Virtual Network Manager (AVNM)?</p>
+                        </div>
+                        <div class="back">
+                            <p>A management service to group, configure, deploy, and manage virtual networks globally across subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>How does AVNM handle connectivity configurations?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVNM supports hub-and-spoke and mesh topologies for managing network connectivity configurations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What is the primary benefit of AVNM's security admin rules?</p>
+                        </div>
+                        <div class="back">
+                            <p>Security admin rules have higher priority than NSG rules, providing centralized enforcement of security policies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What does AVNM automate in network management?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVNM automates the creation and management of virtual network peerings, reducing manual configuration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>How does AVNM improve network performance?</p>
+                        </div>
+                        <div class="back">
+                            <p>By enabling direct connectivity between spokes and optimizing traffic flows, AVNM reduces network latency.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>Can AVNM manage virtual networks across regions and subscriptions?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, AVNM centrally manages and configures connectivity policies across different Azure regions and subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is a hub-and-spoke topology?</p>
+                        </div>
+                        <div class="back">
+                            <p>A network topology where a central hub virtual network connects to multiple spoke virtual networks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What does AVNM's mesh topology configuration allow?</p>
+                        </div>
+                        <div class="back">
+                            <p>It allows all virtual networks to communicate directly with each other without routing through other networks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>How does AVNM enforce security policies?</p>
+                        </div>
+                        <div class="back">
+                            <p>By creating security admin rules that apply to all virtual networks, ensuring a baseline level of security.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is the benefit of AVNM's automated network topology maintenance?</p>
+                        </div>
+                        <div class="back">
+                            <p>It ensures consistent connectivity even as new virtual networks are added or removed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What is the purpose of network groups in AVNM?</p>
+                        </div>
+                        <div class="back">
+                            <p>Network groups logically segment virtual networks to apply specific configurations and policies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What feature of AVNM helps reduce network latency?</p>
+                        </div>
+                        <div class="back">
+                            <p>Enabling direct connectivity between spoke networks without routing through the hub.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How does AVNM support security for critical services?</p>
+                        </div>
+                        <div class="back">
+                            <p>By creating "force-allow" rules to prevent accidental blocking of essential traffic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>How can AVNM help with enforcing organizational security policies?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVNM can create security rules that cannot be overridden at the individual virtual network level.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What does AVNM provide in terms of centralized management?</p>
+                        </div>
+                        <div class="back">
+                            <p>It allows centralized management and configuration of network connectivity and security policies globally.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What does AVNM's dynamic membership feature use?</p>
+                        </div>
+                        <div class="back">
+                            <p>It uses Azure Policy to dynamically add virtual networks to network groups based on specified conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>How does AVNM reduce the risk of manual errors?</p>
+                        </div>
+                        <div class="back">
+                            <p>By automating the deployment and configuration of network settings across virtual networks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the key difference between security admin rules and NSG rules in AVNM?</p>
+                        </div>
+                        <div class="back">
+                            <p>Security admin rules have higher priority and are evaluated first, overriding NSG rules.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What flexibility does AVNM provide for VNet owners?</p>
+                        </div>
+                        <div class="back">
+                            <p>VNet owners can configure network security groups (NSGs) as needed for more specific traffic management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>How does AVNM help with monitoring and diagnostics?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVNM integrates with monitoring tools to quickly identify and resolve network issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
