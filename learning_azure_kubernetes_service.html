@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Learning Azure Kubernetes Service (AKS)</title>
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            margin-top: 20px;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 0.5rem;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .description {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .btn-block {
+            width: 100%;
+            text-align: left;
+            background-color: #007bff;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .btn-block:hover {
+            background-color: #0056b3;
+        }
+
+        .list-group-item {
+            border: none;
+            background-color: #f4f4f9;
+        }
+
+        .list-group-item ul {
+            margin-left: 20px;
+        }
+
+        .question {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tooltip {
+            cursor: pointer;
+            border-bottom: 1px dashed #000;
+        }
+
+        .response {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+        }
+
+        function showResponse(responseId) {
+            var response = document.getElementById(responseId);
+            response.style.display = "block";
+        }
+
+        function hideResponse(responseId) {
+            var response = document.getElementById(responseId);
+            response.style.display = "none";
+        }
+
+        function handleResponse(selectElement, responseYesId, responseNoId) {
+            if (selectElement.value === "yes") {
+                showResponse(responseYesId);
+                hideResponse(responseNoId);
+            } else if (selectElement.value === "no") {
+                showResponse(responseNoId);
+                hideResponse(responseYesId);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Learning Azure Kubernetes Service (AKS)</h1>
+        <p class="text-center description">Learn how to deploy, manage, and scale containerized applications using Azure Kubernetes Service. For more details, visit <a href="https://learn.microsoft.com/en-us/azure/aks/" target="_blank">Azure AKS Documentation</a>.</p>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day1')">Day 1: Introduction to Kubernetes and AKS</button>
+            <div id="day1" class="response">
+                <div class="question">
+                    <label for="topic1">Do you know about Kubernetes basics?</label>
+                    <select id="topic1" onchange="handleResponse(this, 'response1Yes', 'response1No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response1Yes" class="response">
+                    <p>Great! Let's move on to the next section.</p>
+                </div>
+                <div id="response1No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Introduction to Kubernetes <span class="tooltip" data-toggle="tooltip" title="Learn more about Kubernetes basics">[?]</span></strong>
+                            <ul>
+                                <li>What is Kubernetes? <a href="https://learn.microsoft.com/en-us/azure/aks/concepts-clusters-workloads" target="_blank">Learn more</a></li>
+                                <li>Kubernetes architecture and components (nodes, pods, services, etc.) <a href="https://learn.microsoft.com/en-us/azure/aks/concepts-clusters-workloads" target="_blank">Learn more</a></li>
+                                <li>Key concepts: Deployment, ReplicaSet, Services, ConfigMaps, and Secrets. <a href="https://learn.microsoft.com/en-us/azure/aks/concepts-clusters-workloads" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Overview of Azure Kubernetes Service <span class="tooltip" data-toggle="tooltip" title="Learn more about Azure Kubernetes Service">[?]</span></strong>
+                        <ul>
+                            <li>What is AKS? <a href="https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank">Learn more</a></li>
+                            <li>Benefits of using AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank">Learn more</a></li>
+                            <li>AKS architecture. <a href="https://learn.microsoft.com/en-us/azure/aks/concepts-clusters-workloads" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Setting Up AKS <span class="tooltip" data-toggle="tooltip" title="Learn more about setting up AKS">[?]</span></strong>
+                        <ul>
+                            <li>Creating an AKS cluster using the Azure portal. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal" target="_blank">Learn more</a></li>
+                            <li>Using Azure CLI to create and manage AKS clusters. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-walkthrough" target="_blank">Learn more</a></li>
+                            <li>Connecting to the AKS cluster using kubectl. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-walkthrough" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day2')">Day 2: Deploying and Managing Applications in AKS</button>
+            <div id="day2" class="response">
+                <div class="question">
+                    <label for="topic2">Do you know how to deploy applications in AKS?</label>
+                    <select id="topic2" onchange="handleResponse(this, 'response2Yes', 'response2No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response2Yes" class="response">
+                    <p>Great! Let's move on to managing AKS workloads.</p>
+                </div>
+                <div id="response2No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Deploying Applications <span class="tooltip" data-toggle="tooltip" title="Learn more about deploying applications in AKS">[?]</span></strong>
+                            <ul>
+                                <li>Creating Kubernetes manifests (YAML files) for deployments and services. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-deploy-application-cluster" target="_blank">Learn more</a></li>
+                                <li>Deploying a sample application to AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-deploy-application-cluster" target="_blank">Learn more</a></li>
+                                <li>Exposing the application using Kubernetes services (ClusterIP, NodePort, LoadBalancer). <a href="https://learn.microsoft.com/en-us/azure/aks/internal-lb" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Managing AKS Workloads <span class="tooltip" data-toggle="tooltip" title="Learn more about managing AKS workloads">[?]</span></strong>
+                        <ul>
+                            <li>Scaling applications in AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/scale-cluster" target="_blank">Learn more</a></li>
+                            <li>Updating applications with rolling updates. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-upgrade-cluster" target="_blank">Learn more</a></li>
+                            <li>Implementing autoscaling (Horizontal Pod Autoscaler). <a href="https://learn.microsoft.com/en-us/azure/aks/scale-cluster" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day3')">Day 3: AKS Cluster Management</button>
+            <div id="day3" class="response">
+                <div class="question">
+                    <label for="topic3">Do you know how to manage AKS clusters?</label>
+                    <select id="topic3" onchange="handleResponse(this, 'response3Yes', 'response3No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response3Yes" class="response">
+                    <p>Great! Let's move on to configuring persistent storage.</p>
+                </div>
+                <div id="response3No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Cluster Maintenance <span class="tooltip" data-toggle="tooltip" title="Learn more about cluster maintenance">[?]</span></strong>
+                            <ul>
+                                <li>Upgrading AKS clusters. <a href="https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster" target="_blank">Learn more</a></li>
+                                <li>Backing up and restoring Kubernetes objects. <a href="https://learn.microsoft.com/en-us/azure/aks/backup-restore" target="_blank">Learn more</a></li>
+                                <li>Implementing Resource Quotas and Limits. <a href="https://learn.microsoft.com/en-us/azure/aks/configure-cluster" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Configuring Persistent Storage <span class="tooltip" data-toggle="tooltip" title="Learn more about configuring persistent storage">[?]</span></strong>
+                        <ul>
+                            <li>Understanding Persistent Volumes (PV) and Persistent Volume Claims (PVC). <a href="https://learn.microsoft.com/en-us/azure/aks/concepts-storage" target="_blank">Learn more</a></li>
+                            <li>Configuring Azure Disk and Azure File for persistent storage in AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/azure-disk" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day4')">Day 4: Security Best Practices in AKS</button>
+            <div id="day4" class="response">
+                <div class="question">
+                    <label for="topic4">Do you know about security best practices in AKS?</label>
+                    <select id="topic4" onchange="handleResponse(this, 'response4Yes', 'response4No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response4Yes" class="response">
+                    <p>Great! Let's move on to container security.</p>
+                </div>
+                <div id="response4No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Securing AKS Clusters <span class="tooltip" data-toggle="tooltip" title="Learn more about securing AKS clusters">[?]</span></strong>
+                            <ul>
+                                <li>Network policies and securing network traffic. <a href="https://learn.microsoft.com/en-us/azure/aks/use-network-policies" target="_blank">Learn more</a></li>
+                                <li>Using Azure Active Directory for AKS authentication. <a href="https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac" target="_blank">Learn more</a></li>
+                                <li>Implementing Role-Based Access Control (RBAC). <a href="https://learn.microsoft.com/en-us/azure/aks/manage-azure-rbac" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Container Security <span class="tooltip" data-toggle="tooltip" title="Learn more about container security">[?]</span></strong>
+                        <ul>
+                            <li>Best practices for container security. <a href="https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-container" target="_blank">Learn more</a></li>
+                            <li>Using Azure Security Center for AKS. <a href="https://learn.microsoft.com/en-us/azure/security-center/aks-overview" target="_blank">Learn more</a></li>
+                            <li>Scanning container images for vulnerabilities. <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-vulnerability-assessment" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day5')">Day 5: Monitoring and Troubleshooting AKS</button>
+            <div id="day5" class="response">
+                <div class="question">
+                    <label for="topic5">Do you know how to monitor and troubleshoot AKS?</label>
+                    <select id="topic5" onchange="handleResponse(this, 'response5Yes', 'response5No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response5Yes" class="response">
+                    <p>Great! Let's move on to the next section.</p>
+                </div>
+                <div id="response5No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Monitoring AKS <span class="tooltip" data-toggle="tooltip" title="Learn more about monitoring AKS">[?]</span></strong>
+                            <ul>
+                                <li>Setting up Azure Monitor for containers. <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview" target="_blank">Learn more</a></li>
+                                <li>Collecting and analyzing logs using Azure Log Analytics. <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-tutorial" target="_blank">Learn more</a></li>
+                                <li>Monitoring AKS performance and health. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-health-monitor" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Troubleshooting AKS <span class="tooltip" data-toggle="tooltip" title="Learn more about troubleshooting AKS">[?]</span></strong>
+                        <ul>
+                            <li>Debugging Kubernetes applications. <a href="https://learn.microsoft.com/en-us/azure/aks/troubleshooting" target="_blank">Learn more</a></li>
+                            <li>Common issues and resolutions in AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/common-issues" target="_blank">Learn more</a></li>
+                            <li>Using kubectl for troubleshooting. <a href="https://learn.microsoft.com/en-us/azure/aks/kubectl" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('day6')">Day 6: Advanced Topics and Hands-On Labs</button>
+            <div id="day6" class="response">
+                <div class="question">
+                    <label for="topic6">Do you know about advanced AKS features?</label>
+                    <select id="topic6" onchange="handleResponse(this, 'response6Yes', 'response6No')">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="response6Yes" class="response">
+                    <p>Great! Let's move on to hands-on labs.</p>
+                </div>
+                <div id="response6No" class="response">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Advanced AKS Features <span class="tooltip" data-toggle="tooltip" title="Learn more about advanced AKS features">[?]</span></strong>
+                            <ul>
+                                <li>Using Helm for application deployment. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-helm" target="_blank">Learn more</a></li>
+                                <li>Implementing CI/CD pipelines with AKS. <a href="https://learn.microsoft.com/en-us/azure/aks/kubernetes-devops-pipeline" target="_blank">Learn more</a></li>
+                                <li>Using Azure Dev Spaces for development in AKS. <a href="https://learn.microsoft.com/en-us/azure/dev-spaces" target="_blank">Learn more</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Hands-On Labs <span class="tooltip" data-toggle="tooltip" title="Participate in hands-on labs">[?]</span></strong>
+                        <ul>
+                            <li>Guided lab exercises covering the entire AKS lifecycle. <a href="https://learn.microsoft.com/en-us/training/modules/aks-workshop/" target="_blank">Learn more</a></li>
+                            <li>Deploying a multi-tier application on AKS. <a href="https://learn.microsoft.com/en-us/training/modules/aks-workshop/eks-aks-docker-app" target="_blank">Learn more</a></li>
+                            <li>Implementing and testing security policies. <a href="https://learn.microsoft.com/en-us/training/modules/aks-workshop/aks-secure-app" target="_blank">Learn more</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
