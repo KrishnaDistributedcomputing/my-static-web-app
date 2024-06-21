@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure OpenAI Learning Plan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .question-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Learning Plan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.azurekt.com">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Azure OpenAI Learning Plan</h1>
+
+        <!-- Week 1 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Week 1: Introduction to AI and Azure
+            </div>
+            <div class="card-body">
+                <h5>Lesson 1-2: Understanding AI Basics</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week1-lesson1')">Start</button>
+                <div id="week1-lesson1" class="question-section">
+                    <p>Are you familiar with the basics of AI? (yes/no)</p>
+                    <input type="text" id="week1-lesson1-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week1-lesson1')">Submit</button>
+                    <ul id="week1-lesson1-content" class="mt-3">
+                        <li>What is AI?</li>
+                        <li>History and evolution of AI</li>
+                        <li>Key concepts: Machine Learning, Deep Learning, Natural Language Processing (NLP)</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://www.coursera.org/learn/ai-for-everyone">AI For Everyone by Andrew Ng</a></li>
+                                <li><a href="https://www.khanacademy.org/">Khan Academy's AI Basics tutorials</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 3-4: Overview of Azure Services</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week1-lesson3')">Start</button>
+                <div id="week1-lesson3" class="question-section">
+                    <p>Do you have experience with Azure services? (yes/no)</p>
+                    <input type="text" id="week1-lesson3-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week1-lesson3')">Submit</button>
+                    <ul id="week1-lesson3-content" class="mt-3">
+                        <li>Introduction to Azure Cloud Platform</li>
+                        <li>Core Azure services overview</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-fundamentals/">Microsoft Learn: Introduction to Azure</a></li>
+                                <li><a href="https://www.pluralsight.com/courses/microsoft-azure-fundamentals">Pluralsight: Azure Fundamentals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 5-7: Introduction to Azure AI and Cognitive Services</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week1-lesson5')">Start</button>
+                <div id="week1-lesson5" class="question-section">
+                    <p>Have you worked with Azure AI services before? (yes/no)</p>
+                    <input type="text" id="week1-lesson5-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week1-lesson5')">Submit</button>
+                    <ul id="week1-lesson5-content" class="mt-3">
+                        <li>Azure AI overview</li>
+                        <li>Azure Cognitive Services</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/">Azure Cognitive Services Overview</a></li>
+                                <li><a href="https://learn.microsoft.com/en-us/training/paths/azure-ai-fundamentals/">Microsoft Learn: Introduction to Azure AI</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Week 2: Getting Started with Azure OpenAI
+            </div>
+            <div class="card-body">
+                <h5>Lesson 1-2: Setting Up Azure Environment</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week2-lesson1')">Start</button>
+                <div id="week2-lesson1" class="question-section">
+                    <p>Do you know how to set up an Azure environment? (yes/no)</p>
+                    <input type="text" id="week2-lesson1-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week2-lesson1')">Submit</button>
+                    <ul id="week2-lesson1-content" class="mt-3">
+                        <li>Creating an Azure account</li>
+                        <li>Navigating the Azure portal</li>
+                        <li>Setting up resource groups and necessary permissions</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/training/modules/create-an-azure-account/">Microsoft Learn: Azure Portal and Resource Groups</a></li>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal">Azure Documentation on account setup</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 3-4: Introduction to Azure OpenAI Service</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week2-lesson3')">Start</button>
+                <div id="week2-lesson3" class="question-section">
+                    <p>Are you familiar with Azure OpenAI Service? (yes/no)</p>
+                    <input type="text" id="week2-lesson3-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week2-lesson3')">Submit</button>
+                    <ul id="week2-lesson3-content" class="mt-3">
+                        <li>What is Azure OpenAI Service?</li>
+                        <li>Key features and capabilities</li>
+                        <li>Use cases of Azure OpenAI</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://azure.microsoft.com/en-us/services/cognitive-services/openai-service/">Azure OpenAI Service Overview</a></li>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/overview">Azure Documentation and Quickstarts</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 5-7: Hands-on with Azure OpenAI</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week2-lesson5')">Start</button>
+                <div id="week2-lesson5" class="question-section">
+                    <p>Have you done hands-on work with Azure OpenAI? (yes/no)</p>
+                    <input type="text" id="week2-lesson5-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week2-lesson5')">Submit</button>
+                    <ul id="week2-lesson5-content" class="mt-3">
+                        <li>Setting up Azure OpenAI Service</li>
+                        <li>First steps: Deploying a model</li>
+                        <li>Basic operations and API calls</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/tutorials">Azure Documentation: Deploying and using models</a></li>
+                                <li><a href="https://github.com/Azure/azure-openai-samples">Tutorials and example projects</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Week 3: In-Depth Learning and Practical Applications
+            </div>
+            <div class="card-body">
+                <h5>Lesson 1-3: Exploring Azure OpenAI Models</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week3-lesson1')">Start</button>
+                <div id="week3-lesson1" class="question-section">
+                    <p>Do you want to explore Azure OpenAI models? (yes/no)</p>
+                    <input type="text" id="week3-lesson1-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week3-lesson1')">Submit</button>
+                    <ul id="week3-lesson1-content" class="mt-3">
+                        <li>Different models available (GPT, Codex, etc.)</li>
+                        <li>Understanding model capabilities and limitations</li>
+                        <li>Selecting the right model for your needs</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/models">Azure OpenAI Service Model Documentation</a></li>
+                                <li><a href="https://arxiv.org/">Research papers and articles on GPT and Codex</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 4-5: Developing AI Solutions</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week3-lesson4')">Start</button>
+                <div id="week3-lesson4" class="question-section">
+                    <p>Are you interested in developing AI solutions? (yes/no)</p>
+                    <input type="text" id="week3-lesson4-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week3-lesson4')">Submit</button>
+                    <ul id="week3-lesson4-content" class="mt-3">
+                        <li>Building chatbots using Azure OpenAI</li>
+                        <li>Integrating AI with existing applications</li>
+                        <li>Best practices for AI solution development</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/build-chatbot">Microsoft Learn: Building AI Solutions</a></li>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/ai-chatbot">Azure AI Solution Blueprints</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 6-7: Advanced Topics and Customization</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week3-lesson6')">Start</button>
+                <div id="week3-lesson6" class="question-section">
+                    <p>Do you want to learn advanced topics and customization? (yes/no)</p>
+                    <input type="text" id="week3-lesson6-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week3-lesson6')">Submit</button>
+                    <ul id="week3-lesson6-content" class="mt-3">
+                        <li>Fine-tuning and customizing models</li>
+                        <li>Scaling and optimizing AI solutions</li>
+                        <li>Security and compliance considerations</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/fine-tuning">Azure Documentation: Fine-tuning models</a></li>
+                                <li><a href="https://learn.microsoft.com/en-us/azure/security/fundamentals/security-best-practices">Best practices for security and compliance in AI</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Week 4: Project and Certification
+            </div>
+            <div class="card-body">
+                <h5>Lesson 1-3: Capstone Project</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week4-lesson1')">Start</button>
+                <div id="week4-lesson1" class="question-section">
+                    <p>Are you ready to start the capstone project? (yes/no)</p>
+                    <input type="text" id="week4-lesson1-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week4-lesson1')">Submit</button>
+                    <ul id="week4-lesson1-content" class="mt-3">
+                        <li>Design and implement a project using Azure OpenAI</li>
+                        <li>Examples: Chatbot, content generation tool, code assistant</li>
+                        <li>Tasks:
+                            <ul>
+                                <li>Define project scope and objectives</li>
+                                <li>Develop and deploy the solution</li>
+                                <li>Test and refine the application</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 4-5: Preparing for Certification</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week4-lesson4')">Start</button>
+                <div id="week4-lesson4" class="question-section">
+                    <p>Are you preparing for certification? (yes/no)</p>
+                    <input type="text" id="week4-lesson4-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week4-lesson4')">Submit</button>
+                    <ul id="week4-lesson4-content" class="mt-3">
+                        <li>Overview of relevant Azure certifications (e.g., AI-102: Designing and Implementing an Azure AI Solution)</li>
+                        <li>Exam preparation tips and resources</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/certifications/exams/ai-102/">Microsoft Learn: AI-102 Certification Learning Path</a></li>
+                                <li><a href="https://www.examtopics.com/exams/microsoft/ai-102/view/">Practice exams and study guides</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Lesson 6-7: Continuous Learning and Community Engagement</h5>
+                <button class="btn btn-primary mb-2" onclick="toggleQuestion('week4-lesson6')">Start</button>
+                <div id="week4-lesson6" class="question-section">
+                    <p>Are you interested in continuous learning and community engagement? (yes/no)</p>
+                    <input type="text" id="week4-lesson6-answer" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="processAnswer('week4-lesson6')">Submit</button>
+                    <ul id="week4-lesson6-content" class="mt-3">
+                        <li>Staying updated with the latest in Azure AI</li>
+                        <li>Joining AI and Azure communities</li>
+                        <li>Contributing to open-source projects</li>
+                        <li>Resources:
+                            <ul>
+                                <li><a href="https://techcommunity.microsoft.com/">Follow Azure AI blogs and updates</a></li>
+                                <li><a href="https://github.com/">Join Microsoft Tech Community and other relevant forums</a></li>
+                                <li><a href="https://azure.microsoft.com/en-us/overview/azure-open-source/">Participate in GitHub projects and Azure user groups</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p>&copy; 2024 AzureKT. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleQuestion(sectionId) {
+            var section = document.getElementById(sectionId);
+            section.style.display = section.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function processAnswer(sectionId) {
+            var answer = document.getElementById(sectionId + '-answer').value.toLowerCase();
+            var content = document.getElementById(sectionId + '-content');
+
+            if (answer === 'yes') {
+                content.style.display = 'none';
+            } else if (answer === 'no') {
+                content.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

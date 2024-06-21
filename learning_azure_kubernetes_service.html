@@ -71,6 +71,20 @@
         .response {
             display: none;
         }
+
+        .download-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-button:hover {
+            background-color: #218838;
+        }
     </style>
     <script>
         function toggleContent(id) {
@@ -97,6 +111,80 @@
                 hideResponse(responseYesId);
             }
         }
+
+        function downloadLessonPlan() {
+            const lessonPlan = `
+            Learning Azure Kubernetes Service (AKS)
+
+            Lesson 1: Introduction to Kubernetes and AKS
+            - Introduction to Kubernetes
+                - What is Kubernetes?
+                - Kubernetes architecture and components (nodes, pods, services, etc.)
+                - Key concepts: Deployment, ReplicaSet, Services, ConfigMaps, and Secrets.
+            - Overview of Azure Kubernetes Service
+                - What is AKS?
+                - Benefits of using AKS.
+                - AKS architecture.
+            - Setting Up AKS
+                - Creating an AKS cluster using the Azure portal.
+                - Using Azure CLI to create and manage AKS clusters.
+                - Connecting to the AKS cluster using kubectl.
+
+            Lesson 2: Deploying and Managing Applications in AKS
+            - Deploying Applications
+                - Creating Kubernetes manifests (YAML files) for deployments and services.
+                - Deploying a sample application to AKS.
+                - Exposing the application using Kubernetes services (ClusterIP, NodePort, LoadBalancer).
+            - Managing AKS Workloads
+                - Scaling applications in AKS.
+                - Updating applications with rolling updates.
+                - Implementing autoscaling (Horizontal Pod Autoscaler).
+
+            Lesson 3: AKS Cluster Management
+            - Cluster Maintenance
+                - Upgrading AKS clusters.
+                - Backing up and restoring Kubernetes objects.
+                - Implementing Resource Quotas and Limits.
+            - Configuring Persistent Storage
+                - Understanding Persistent Volumes (PV) and Persistent Volume Claims (PVC).
+                - Configuring Azure Disk and Azure File for persistent storage in AKS.
+
+            Lesson 4: Security Best Practices in AKS
+            - Securing AKS Clusters
+                - Network policies and securing network traffic.
+                - Using Azure Active Directory for AKS authentication.
+                - Implementing Role-Based Access Control (RBAC).
+            - Container Security
+                - Best practices for container security.
+                - Using Azure Security Center for AKS.
+                - Scanning container images for vulnerabilities.
+
+            Lesson 5: Monitoring and Troubleshooting AKS
+            - Monitoring AKS
+                - Setting up Azure Monitor for containers.
+                - Collecting and analyzing logs using Azure Log Analytics.
+                - Monitoring AKS performance and health.
+            - Troubleshooting AKS
+                - Debugging Kubernetes applications.
+                - Common issues and resolutions in AKS.
+                - Using kubectl for troubleshooting.
+
+            Lesson 6: Advanced Topics and Hands-On Labs
+            - Advanced AKS Features
+                - Using Helm for application deployment.
+                - Implementing CI/CD pipelines with AKS.
+                - Using Azure Dev Spaces for development in AKS.
+            - Hands-On Labs
+                - Guided lab exercises covering the entire AKS lifecycle.
+                - Deploying a multi-tier application on AKS.
+                - Implementing and testing security policies.
+            `;
+            const blob = new Blob([lessonPlan], { type: "text/plain;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Azure_Kubernetes_Service_Lesson_Plan.txt";
+            link.click();
+        }
     </script>
 </head>
 
@@ -106,8 +194,8 @@
         <p class="text-center description">Learn how to deploy, manage, and scale containerized applications using Azure Kubernetes Service. For more details, visit <a href="https://learn.microsoft.com/en-us/azure/aks/" target="_blank">Azure AKS Documentation</a>.</p>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day1')">Day 1: Introduction to Kubernetes and AKS</button>
-            <div id="day1" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson1')">Lesson 1: Introduction to Kubernetes and AKS</button>
+            <div id="lesson1" class="response">
                 <div class="question">
                     <label for="topic1">Do you know about Kubernetes basics?</label>
                     <select id="topic1" onchange="handleResponse(this, 'response1Yes', 'response1No')">
@@ -154,8 +242,8 @@
         </div>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day2')">Day 2: Deploying and Managing Applications in AKS</button>
-            <div id="day2" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson2')">Lesson 2: Deploying and Managing Applications in AKS</button>
+            <div id="lesson2" class="response">
                 <div class="question">
                     <label for="topic2">Do you know how to deploy applications in AKS?</label>
                     <select id="topic2" onchange="handleResponse(this, 'response2Yes', 'response2No')">
@@ -194,8 +282,8 @@
         </div>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day3')">Day 3: AKS Cluster Management</button>
-            <div id="day3" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson3')">Lesson 3: AKS Cluster Management</button>
+            <div id="lesson3" class="response">
                 <div class="question">
                     <label for="topic3">Do you know how to manage AKS clusters?</label>
                     <select id="topic3" onchange="handleResponse(this, 'response3Yes', 'response3No')">
@@ -233,8 +321,8 @@
         </div>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day4')">Day 4: Security Best Practices in AKS</button>
-            <div id="day4" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson4')">Lesson 4: Security Best Practices in AKS</button>
+            <div id="lesson4" class="response">
                 <div class="question">
                     <label for="topic4">Do you know about security best practices in AKS?</label>
                     <select id="topic4" onchange="handleResponse(this, 'response4Yes', 'response4No')">
@@ -273,8 +361,8 @@
         </div>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day5')">Day 5: Monitoring and Troubleshooting AKS</button>
-            <div id="day5" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson5')">Lesson 5: Monitoring and Troubleshooting AKS</button>
+            <div id="lesson5" class="response">
                 <div class="question">
                     <label for="topic5">Do you know how to monitor and troubleshoot AKS?</label>
                     <select id="topic5" onchange="handleResponse(this, 'response5Yes', 'response5No')">
@@ -313,8 +401,8 @@
         </div>
 
         <div class="content-section">
-            <button class="btn btn-primary btn-block" onclick="toggleContent('day6')">Day 6: Advanced Topics and Hands-On Labs</button>
-            <div id="day6" class="response">
+            <button class="btn btn-primary btn-block" onclick="toggleContent('lesson6')">Lesson 6: Advanced Topics and Hands-On Labs</button>
+            <div id="lesson6" class="response">
                 <div class="question">
                     <label for="topic6">Do you know about advanced AKS features?</label>
                     <select id="topic6" onchange="handleResponse(this, 'response6Yes', 'response6No')">
@@ -351,6 +439,8 @@
                 </ul>
             </div>
         </div>
+
+        <button class="download-button" onclick="downloadLessonPlan()">Download Lesson Plan</button>
     </div>
     <script>
         $(document).ready(function() {
