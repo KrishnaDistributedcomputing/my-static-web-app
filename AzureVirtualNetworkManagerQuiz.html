@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Virtual Network Manager Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Virtual Network Manager Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="A management service for virtual networks globally across subscriptions">
+                <label>1. What is Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="A management service for virtual networks globally across subscriptions">A management service for virtual networks globally across subscriptions</option>
+                    <option value="A tool for managing only on-premise networks">A tool for managing only on-premise networks</option>
+                    <option value="An Azure service for managing virtual machines">An Azure service for managing virtual machines</option>
+                    <option value="A security tool for Azure databases">A security tool for Azure databases</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Mesh, Hub-and-Spoke, Hub-and-Spoke with Direct Connectivity">
+                <label>2. What topology options does Azure Virtual Network Manager offer?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Mesh, Hub-and-Spoke, Hub-and-Spoke with Direct Connectivity">Mesh, Hub-and-Spoke, Hub-and-Spoke with Direct Connectivity</option>
+                    <option value="Star, Ring, Fully Connected">Star, Ring, Fully Connected</option>
+                    <option value="Single, Dual, Triple">Single, Dual, Triple</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Dynamic membership allows adding virtual networks based on conditions using Azure Policy">
+                <label>3. What is dynamic membership in Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Adding virtual networks manually to a network group">Adding virtual networks manually to a network group</option>
+                    <option value="Dynamic membership allows adding virtual networks based on conditions using Azure Policy">Dynamic membership allows adding virtual networks based on conditions using Azure Policy</option>
+                    <option value="Automatically removing virtual networks from a group">Automatically removing virtual networks from a group</option>
+                    <option value="Creating new virtual networks automatically">Creating new virtual networks automatically</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Security admin rules override network security group rules">
+                <label>4. What is the function of security admin rules in Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="They manage user permissions">They manage user permissions</option>
+                    <option value="They override network security group rules">They override network security group rules</option>
+                    <option value="They configure storage accounts">They configure storage accounts</option>
+                    <option value="They provide cost management features">They provide cost management features</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Static and dynamic">
+                <label>5. What are the types of network group memberships in Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Static and dynamic">Static and dynamic</option>
+                    <option value="Single and multiple">Single and multiple</option>
+                    <option value="Manual and automatic">Manual and automatic</option>
+                    <option value="Basic and advanced">Basic and advanced</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Highly scalable and highly available service with redundancy and replication across the globe">
+                <label>6. What is a key benefit of Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Provides database management">Provides database management</option>
+                    <option value="Highly scalable and highly available service with redundancy and replication across the globe">Highly scalable and highly available service with redundancy and replication across the globe</option>
+                    <option value="Offers virtual machine automation">Offers virtual machine automation</option>
+                    <option value="Manages cost and billing">Manages cost and billing</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Management groups provide hierarchical organization to your subscriptions">
+                <label>7. What is the advantage of using management groups in Azure Virtual Network Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="They are used to create virtual machines">They are used to create virtual machines</option>
+                    <option value="They manage user permissions">They manage user permissions</option>
+                    <option value="Management groups provide hierarchical organization to your subscriptions">Management groups provide hierarchical organization to your subscriptions</option>
+                    <option value="They provide cost management features">They provide cost management features</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Hub-and-spoke topology with direct connectivity">
+                <label>8. Which topology combines common central infrastructure in the hub with direct communication between all spokes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Mesh topology">Mesh topology</option>
+                    <option value="Star topology">Star topology</option>
+                    <option value="Ring topology">Ring topology</option>
+                    <option value="Hub-and-spoke topology with direct connectivity">Hub-and-spoke topology with direct connectivity</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const learnLinks = {
+            '1. What is Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '2. What topology options does Azure Virtual Network Manager offer?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '3. What is dynamic membership in Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '4. What is the function of security admin rules in Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '5. What are the types of network group memberships in Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '6. What is a key benefit of Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '7. What is the advantage of using management groups in Azure Virtual Network Manager?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+            '8. Which topology combines common central infrastructure in the hub with direct communication between all spokes?': 'https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview',
+        };
+
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    const learnMoreLink = learnLinks[question.querySelector('label').textContent];
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. <a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.className = 'feedback incorrect-answer';
+                    const collapseContent = document.createElement('div');
+                    collapseContent.className = 'collapse';
+                    collapseContent.innerHTML = `<a href="${learnMoreLink}" target="_blank">Learn more</a>`;
+                    feedback.appendChild(collapseContent);
+                    feedback.addEventListener('click', () => {
+                        collapseContent.classList.toggle('show');
+                    });
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+                if (feedback.querySelector('.collapse')) {
+                    feedback.querySelector('.collapse').remove();
+                }
+            });
+            document.getElementById('result').textContent = '';
+        });
+
+        document.getElementById('share').addEventListener('click', function () {
+            const resultText = document.getElementById('result').textContent;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=your-relative-url&title=Azure%20Quiz%20Results&summary=${encodeURIComponent(resultText)}&source=LinkedIn`;
+            window.open(linkedInUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
