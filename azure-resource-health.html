@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Service Health</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #005a9c;
+        }
+        h3 {
+            color: #0078d4;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Azure Service Health Documentation</h1>
+    <p>Azure Service Health is a suite of experiences that provide personalized guidance and support when issues in Azure services are or may affect you in the future. Azure Service Health is composed of Azure status, the service health service, and Resource Health.</p>
+    
+    <div class="section">
+        <h2>About Azure Service Health</h2>
+        <h3>Overview</h3>
+        <ul>
+            <li><a href="#azure-service-health-service">Azure Service Health service</a></li>
+            <li><a href="#azure-status">Azure status</a></li>
+            <li><a href="#service-health-portal">Service health portal</a></li>
+            <li><a href="#resource-health">Resource Health</a></li>
+        </ul>
+    </div>
+    
+    <div class="section" id="azure-service-health-service">
+        <h3>Azure Service Health service</h3>
+        <p>Azure Service Health provides personalized information about the health of your Azure services. It helps you diagnose and get support for issues affecting your resources. Azure Service Health can be accessed from the Azure portal.</p>
+    </div>
+    
+    <div class="section" id="azure-status">
+        <h3>Azure status</h3>
+        <p>Azure status informs you of service outages in Azure on the Azure Status page. The page is a global view of the health of all Azure services across all Azure regions. The status page is a good reference for incidents with widespread impact, but it is recommended that current Azure users leverage Azure service health to stay informed about Azure incidents and maintenance.</p>
+        <p><a href="https://azure.status.microsoft/">View Azure Status</a></p>
+    </div>
+    
+    <div class="section" id="service-health-portal">
+        <h3>Service health portal</h3>
+        <p>The Service Health portal provides a personalized view of the health of the Azure services and regions you're using. It is the best place to look for service-impacting communications about outages, planned maintenance activities, and other health advisories. The authenticated Service Health experience knows which services and resources you currently use.</p>
+        <p><a href="https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/serviceHealth">Access Service Health Portal</a></p>
+    </div>
+    
+    <div class="section" id="resource-health">
+        <h3>Resource Health</h3>
+        <p>Resource Health provides information about the health of your individual cloud resources, such as a specific virtual machine instance. Using Azure Monitor, you can configure alerts to notify you of availability changes to your cloud resources. Resource Health, along with Azure Monitor notifications, helps you stay better informed about the availability of your resources minute by minute and quickly assess whether an issue is due to a problem on your side or related to an Azure platform event.</p>
+    </div>
+    
+    <div class="section">
+        <h2>What's New in Azure Service Health</h2>
+        <p>This section lists recent changes in the Azure Service Health service.</p>
+        <ul>
+            <li>On July 25, 2022, the Azure status page location changed to <a href="https://azure.status.microsoft/">azure.status.microsoft</a> from status.azure.com.</li>
+            <li>A new tab named "Current Impact" was added to the Azure Status page.</li>
+            <li>The health history UI has been updated.</li>
+        </ul>
+        <p>For more information on the Azure Status page, visit <a href="https://azure.status.microsoft/">Azure status overview</a></p>
+    </div>
+    
+    <div class="section">
+        <h2>Get Notified</h2>
+        <p>Learn how to get notified when an issue with an Azure service affects you:</p>
+        <ul>
+            <li><a href="https://learn.microsoft.com/en-us/azure/service-health/service-health-notifications">Get notified when an issue with an Azure service affects you</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/service-health/resource-health-notifications">Get notified when your Azure resource becomes unavailable</a></li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>How-to Guide</h2>
+        <p>Step-by-step instructions to set up notifications and alerts:</p>
+        <ul>
+            <li><a href="https://learn.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-portal">Create activity log alerts on service notifications using the Azure portal</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-template">Create activity log alerts on service notifications using a Bicep file</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-arm-template">Create activity log alerts on service notifications using an ARM template</a></li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Resource Health Overview</h2>
+        <p>Azure Resource Health helps you diagnose and get support for service problems that affect your Azure resources. It reports on the current and past health of your resources. Resource Health shows all the times that your resources have been unavailable because of Azure service problems.</p>
+        <p>For more information, see the <a href="https://learn.microsoft.com/en-us/azure/service-health/resource-health-overview">Resource Health overview</a>.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Azure Service Health Portal Update</h2>
+        <p>The Azure Service Health portal experience has been updated to let users engage with service events and manage actions to maintain the business continuity of impacted applications. The new experience is rolling out in phases, and some users will see the updated experience while others will still see the classic Service Health portal experience.</p>
+        <p>For more details, visit the <a href="https://learn.microsoft.com/en-us/azure/service-health/service-health-portal-update">Azure Service Health portal update</a>.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Security Advisories</h2>
+        <p>Security Advisories are displayed to users at the subscription or tenant level. Users with the subscription reader role or higher can view Security Advisory details. However, accessing Security Advisories will require elevated access roles in the future.</p>
+        <p>For more information, see the <a href="https://learn.microsoft.com/en-us/azure/service-health/security-advisories">Security Advisories</a> article.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Configure Webhook Notifications</h2>
+        <p>You can configure Azure Service Health alerts to send data through webhooks to your existing notification system. This allows you to integrate Service Health alerts with systems like ServiceNow, PagerDuty, and OpsGenie.</p>
+        <p>Learn how to <a href="https://learn.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-webhook">configure webhook notifications for existing problem management systems</a>.</p>
+    </div>
+</body>
+</html>
