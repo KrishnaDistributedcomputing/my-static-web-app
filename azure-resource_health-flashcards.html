@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Service Health Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Service Health Flashcards</h2>
+        <p>Test your knowledge about Azure Service Health with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Service Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>A suite of experiences providing personalized guidance and support when Azure service issues affect you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What are the components of Azure Service Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Status, Service Health service, and Resource Health.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What does Azure Status provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>A global view of the health of Azure services across all regions, including service outages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What does Service Health provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>A personalized view of the health of Azure services and regions you use, including outages and maintenance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What does Resource Health provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>Information about the health of individual cloud resources, helping you diagnose and get support for issues.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How can you get notified about Azure service issues?</p>
+                        </div>
+                        <div class="back">
+                            <p>Set up Service Health alerts to notify you via your preferred communication channels.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What are the types of health events tracked by Service Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>Service issues, planned maintenance, health advisories, and security advisories.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What is the purpose of the Service Health portal?</p>
+                        </div>
+                        <div class="back">
+                            <p>To provide a customizable dashboard tracking the health of your Azure services in the regions you use.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What does the Resource Health status 'Available' mean?</p>
+                        </div>
+                        <div class="back">
+                            <p>There are no events detected that affect the health of the resource.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What does the Resource Health status 'Unavailable' mean?</p>
+                        </div>
+                        <div class="back">
+                            <p>The service detected an ongoing platform or non-platform event affecting the resource's health.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What is the 'Unknown' status in Resource Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>Resource Health hasn't received information about the resource for more than 10 minutes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What is the 'Degraded' status in Resource Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>The resource detected a loss in performance, although it's still available for use.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How can you access Resource Health for a resource?</p>
+                        </div>
+                        <div class="back">
+                            <p>Sign in to the Azure portal, browse to your resource, and select Resource health from the menu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What is the new Health Alerts experience in Service Health?</p>
+                        </div>
+                        <div class="back">
+                            <p>An updated interface for better usability, allowing users to search, sort, and view alert details and history.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What feature has been deprecated in the new Service Health experience?</p>
+                        </div>
+                        <div class="back">
+                            <p>Users can no longer pin a personalized map to the dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What is the importance of the Azure Status page?</p>
+                        </div>
+                        <div class="back">
+                            <p>It provides a global view of the health of Azure services and regions, showing service availability and incidents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>How can you create a Service Health alert using the Azure portal?</p>
+                        </div>
+                        <div class="back">
+                            <p>Select Service Health, go to Health alerts, and add a new service health alert.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What information can Resource Health provide during an issue?</p>
+                        </div>
+                        <div class="back">
+                            <p>Details about the event, recovery process, and actions you can take, including contacting Microsoft Support.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What types of notifications can Service Health alerts provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>Notifications for service issues, planned maintenance, health advisories, and security advisories.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>What is the benefit of setting up Service Health alerts?</p>
+                        </div>
+                        <div class="back">
+                            <p>Ensures you are proactively notified about health issues affecting your Azure resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
