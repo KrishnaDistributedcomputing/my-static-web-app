@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Azure Resource Graph Quiz</title>
+    <title>Azure Load Balancer Quiz</title>
     <style>
         body {
             display: flex;
@@ -115,116 +115,116 @@
 <body>
     <div class="quiz-container">
         <div class="header">
-            <h4>Azure Resource Graph Quiz</h4>
+            <h4>Azure Load Balancer Quiz</h4>
         </div>
         <form id="quizForm">
-            <div class="question" data-answer="c">
-                <label>1. What is the primary use of Azure Resource Graph?</label>
-                <select class="form-control">
-                    <option value="" selected disabled>Select an answer</option>
-                    <option value="a">To deploy resources in Azure</option>
-                    <option value="b">To manage virtual machines</option>
-                    <option value="c">To extend Azure Resource Management by providing efficient and performant resource exploration</option>
-                    <option value="d">To monitor network traffic</option>
-                </select>
-                <p class="feedback"></p>
-            </div>
             <div class="question" data-answer="b">
-                <label>2. How can you automate Azure Resource Graph query execution?</label>
+                <label>1. What is the primary purpose of Azure Load Balancer?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Using Azure Monitor</option>
-                    <option value="b">Using Azure Logic Apps</option>
-                    <option value="c">Using Azure Virtual Machines</option>
-                    <option value="d">Using Azure DevOps</option>
-                </select>
-                <p class="feedback"></p>
-            </div>
-            <div class="question" data-answer="a">
-                <label>3. What type of Azure Logic App plan should be selected when creating one for Azure Resource Graph?</label>
-                <select class="form-control">
-                    <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Consumption plan</option>
-                    <option value="b">Basic plan</option>
-                    <option value="c">Standard plan</option>
-                    <option value="d">Enterprise plan</option>
-                </select>
-                <p class="feedback"></p>
-            </div>
-            <div class="question" data-answer="a">
-                <label>4. How can you enable a system-assigned managed identity in an Azure Logic App?</label>
-                <select class="form-control">
-                    <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Through the Azure portal under Identity settings</option>
-                    <option value="b">By editing the app configuration file</option>
-                    <option value="c">By contacting Azure support</option>
-                    <option value="d">By running a PowerShell script</option>
-                </select>
-                <p class="feedback"></p>
-            </div>
-            <div class="question" data-answer="b">
-                <label>5. What is the purpose of assigning Role Assignments to a Managed Identity in Azure?</label>
-                <select class="form-control">
-                    <option value="" selected disabled>Select an answer</option>
-                    <option value="a">To provide internet access to the managed identity</option>
-                    <option value="b">To grant specific permissions required for accessing resources</option>
-                    <option value="c">To enable the managed identity to create resources</option>
-                    <option value="d">To monitor the managed identity</option>
-                </select>
-                <p class="feedback"></p>
-            </div>
-            <div class="question" data-answer="b">
-                <label>6. Describe the process to create a Private query in Azure Resource Graph Explorer.</label>
-                <select class="form-control">
-                    <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Save the query to your local machine</option>
-                    <option value="b">Save the query to your Azure portal profile</option>
-                    <option value="c">Share the query with other users</option>
-                    <option value="d">Use the query in Azure DevOps</option>
+                    <option value="a">To store customer data securely</option>
+                    <option value="b">To distribute incoming network traffic across backend servers</option>
+                    <option value="c">To provide database services</option>
+                    <option value="d">To create virtual machines</option>
                 </select>
                 <p class="feedback"></p>
             </div>
             <div class="question" data-answer="c">
-                <label>7. What is the difference between a Private query and a Shared query in Azure Resource Graph?</label>
+                <label>2. At which layer of the OSI model does Azure Load Balancer operate?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Private queries are saved locally, Shared queries are saved in the cloud</option>
-                    <option value="b">Private queries are visible to others, Shared queries are not</option>
-                    <option value="c">Private queries are saved to an individual's Azure portal profile, Shared queries are Resource Manager objects that can be shared</option>
-                    <option value="d">There is no difference</option>
+                    <option value="a">Layer 2</option>
+                    <option value="b">Layer 3</option>
+                    <option value="c">Layer 4</option>
+                    <option value="d">Layer 7</option>
                 </select>
                 <p class="feedback"></p>
             </div>
             <div class="question" data-answer="b">
-                <label>8. How can you pin query results to an Azure portal dashboard?</label>
+                <label>3. Which type of Azure Load Balancer provides outbound connections for VMs inside a virtual network?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="a">By exporting the results to a CSV file</option>
-                    <option value="b">By using the "Pin to dashboard" option in Azure Resource Graph Explorer</option>
-                    <option value="c">By sharing the query with other users</option>
-                    <option value="d">By saving the results locally</option>
+                    <option value="a">Internal Load Balancer</option>
+                    <option value="b">Public Load Balancer</option>
+                    <option value="c">Application Gateway</option>
+                    <option value="d">Traffic Manager</option>
                 </select>
                 <p class="feedback"></p>
             </div>
             <div class="question" data-answer="b">
-                <label>9. How do you use Azure Resource Graph to find virtual machines marked as critical that had a heartbeat more than 24 hours ago?</label>
+                <label>4. What is a key feature of Azure Standard Load Balancer that enhances availability?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="a">By creating an alert in Azure Monitor</option>
-                    <option value="b">By using the query language to filter the results</option>
-                    <option value="c">By exporting the data to Excel and analyzing it</option>
-                    <option value="d">By running a PowerShell script</option>
+                    <option value="a">It provides a single IP address</option>
+                    <option value="b">It supports load balancing across multiple availability zones</option>
+                    <option value="c">It is free of charge</option>
+                    <option value="d">It requires no configuration</option>
                 </select>
                 <p class="feedback"></p>
             </div>
             <div class="question" data-answer="b">
-                <label>10. What is the command to install the Azure Resource Graph module in PowerShell?</label>
+                <label>5. What is the default state of inbound connections for a Standard Load Balancer with a standard public IP address?</label>
                 <select class="form-control">
                     <option value="" selected disabled>Select an answer</option>
-                    <option value="a">Install-Module -Name Az.Graph</option>
-                    <option value="b">Install-Module -Name Az.ResourceGraph</option>
-                    <option value="c">Install-Module -Name Azure.Graph</option>
-                    <option value="d">Install-Module -Name Azure.ResourceGraph</option>
+                    <option value="a">Open to all inbound connections</option>
+                    <option value="b">Closed to inbound connections unless opened by Network Security Groups (NSGs)</option>
+                    <option value="c">Only accessible from on-premises networks</option>
+                    <option value="d">Automatically configured for high availability</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>6. Which SKU of Azure Load Balancer supports load balancing of IPv6?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Basic SKU</option>
+                    <option value="b">Standard SKU</option>
+                    <option value="c">Premium SKU</option>
+                    <option value="d">Enterprise SKU</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>7. What tool can be used to monitor the performance and health of a Standard Load Balancer?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Monitor</option>
+                    <option value="b">Azure DevOps</option>
+                    <option value="c">Azure Key Vault</option>
+                    <option value="d">Azure Data Factory</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>8. Which feature of Azure Load Balancer helps in diagnosing the health of backend pool instances?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Resource Health</option>
+                    <option value="b">Health Probes</option>
+                    <option value="c">Network Security Groups</option>
+                    <option value="d">Virtual Network Peering</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>9. What happens when a VM in the backend pool fails a health probe check in Azure Load Balancer?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">It is permanently removed from the pool</option>
+                    <option value="b">It continues to receive traffic</option>
+                    <option value="c">It is temporarily removed until the failure is resolved</option>
+                    <option value="d">It triggers an alert but stays in the pool</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>10. How does Azure Load Balancer support high throughput and low latency for applications?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">By using Basic SKU</option>
+                    <option value="b">By distributing traffic only within a single region</option>
+                    <option value="c">By supporting millions of flows for TCP and UDP applications</option>
+                    <option value="d">By storing application data locally</option>
                 </select>
                 <p class="feedback"></p>
             </div>
@@ -293,4 +293,3 @@
 </body>
 
 </html>
-``
