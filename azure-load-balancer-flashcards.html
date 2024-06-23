@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Load Balancer Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Load Balancer Flashcards</h2>
+        <p>Test your knowledge about Azure Load Balancer with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Load Balancer distributes inbound flows arriving at the load balancer's front end to backend pool instances according to configured load-balancing rules and health probes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What are the types of Azure Load Balancers?</p>
+                        </div>
+                        <div class="back">
+                            <p>Public Load Balancer and Internal (Private) Load Balancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What does the Public Load Balancer provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>It provides outbound connections for VMs inside your virtual network by translating their private IP addresses to public IP addresses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is the role of an Internal Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>It is used to load balance traffic inside a virtual network or in a hybrid scenario where the frontend IP is accessed from an on-premises network.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What are some key scenarios for using Azure Standard Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Load balancing internal and external traffic to Azure VMs, configuring outbound connectivity for VMs, using health probes, and enabling support for IPv6.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What are health probes in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Health probes monitor the status of your app to determine which instances are healthy and can receive traffic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is the difference between Basic and Standard Load Balancers?</p>
+                        </div>
+                        <div class="back">
+                            <p>Standard Load Balancer provides more features, better security, and higher scalability compared to Basic Load Balancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>How does Azure Load Balancer handle availability zones?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Load Balancer supports availability zones by distributing traffic across VMs in different zones, enhancing resilience and availability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What are the pricing tiers for Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Basic Load Balancer is free, while Standard Load Balancer has a cost associated based on the number of rules and data processed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is a NAT gateway in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>A NAT gateway provides outbound Internet connectivity for one or more subnets of a virtual network.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>How do you create a public IP address for a load balancer in Azure CLI?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use `az network public-ip create` command with appropriate parameters for resource group, name, SKU, and zone.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>How does Azure Load Balancer support multiple frontends?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Load Balancer can have multiple frontend IP configurations to load balance traffic on different IP addresses and ports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>What is the command to create a health probe in Azure CLI?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use `az network lb probe create` command with parameters for resource group, load balancer name, probe name, protocol, and port.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What is the purpose of a backend pool in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>A backend pool contains the virtual machines that the load balancer distributes traffic to.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What does the term 'Idle timeout' refer to in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>'Idle timeout' refers to the duration after which an idle connection is closed by the load balancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>How can you test the load balancer setup in Azure?</p>
+                        </div>
+                        <div class="back">
+                            <p>Copy the public IP address of the load balancer and paste it into a browser to check the default page of the IIS web server on backend VMs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What is a load balancing rule in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>A load balancing rule defines how traffic is distributed to the VMs in the backend pool, specifying frontend IP, backend pool, protocol, and ports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the function of 'Floating IP' in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>'Floating IP' enables direct server return, allowing traffic to be routed directly back to the client without passing through the load balancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What is the purpose of Network Security Groups (NSGs) in Azure Load Balancer?</p>
+                        </div>
+                        <div class="back">
+                            <p>NSGs are used to control inbound and outbound traffic to the resources in the virtual network, enhancing security.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>How can you create a load balancer in Azure PowerShell?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use the `New-AzLoadBalancer` cmdlet with parameters for resource group, name, location, SKU, frontend IP configuration, backend pool, and health probe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
