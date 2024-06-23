@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Resource Graph Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Resource Graph Flashcards</h2>
+        <p>Test your knowledge about Azure Resource Graph with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph is an Azure service designed to extend Azure Resource Management by providing efficient and performant resource exploration with the ability to query at scale across a given set of subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What are the capabilities of Azure Resource Graph queries?</p>
+                        </div>
+                        <div class="back">
+                            <p>Query resources with complex filtering, grouping, and sorting by resource properties; explore resources iteratively based on governance requirements; assess the effect of applying policies; query changes made to resource properties.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What are the basic resource fields supported by Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Resource name, ID, Type, Resource Group, Subscription.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>How is Azure Resource Graph kept current?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph updates its database regularly and whenever there is a change notified by Azure Resource Manager.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>Which query language does Azure Resource Graph use?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph's query language is based on the Kusto Query Language (KQL) used by Azure Data Explorer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How does Azure Resource Graph support Azure Lighthouse?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph supports Azure Lighthouse, enabling service providers to manage customer-delegated subscriptions and resource groups from their own tenant.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What are the steps to run your first query using Azure Resource Graph Explorer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Sign in to the Azure portal, search for Resource Graph Explorer, select the directory and scope, enter and run the query, review the results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>How do you enable Azure CLI to query resources using Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Install the Azure Resource Graph extension for Azure CLI using `az extension add --name resource-graph`.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What is the purpose of Resource Graph's schema browser?</p>
+                        </div>
+                        <div class="back">
+                            <p>To find and select resource types and properties to be used in queries, making it easier to construct and refine queries.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What are the integration options for creating alerts with Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph queries can be integrated with Azure Monitor and Log Analytics to create alert rules based on resource conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Flashcards -->
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>How does Azure Resource Graph handle large datasets?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph uses efficient indexing and querying mechanisms to handle large datasets and provides throttling to ensure optimal performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What is a skip token in Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>A skip token is used to handle pagination in query results, allowing retrieval of more than the default limit of records in a single query.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>What are some common use cases for Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Common use cases include inventory management, resource governance, security and compliance monitoring, and cost management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>How can Azure Resource Graph queries be shared?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph queries can be saved and shared as either private or shared queries, with shared queries being accessible to other users with appropriate permissions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What is the maximum number of records returned by Azure Resource Graph by default?</p>
+                        </div>
+                        <div class="back">
+                            <p>By default, Azure Resource Graph returns a maximum of 1,000 records per query.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>How can Azure Resource Graph be integrated with Power BI?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph can be integrated with Power BI using the Power BI connector, allowing users to run queries and visualize results within Power BI.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What are some advanced query capabilities of Azure Resource Graph?</p>
+                        </div>
+                        <div class="back">
+                            <p>Advanced query capabilities include joining multiple tables, using functions for aggregations, and implementing complex filtering logic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the purpose of the Azure Resource Graph Explorer?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph Explorer is a tool in the Azure portal that provides a user-friendly interface for constructing, running, and visualizing Resource Graph queries.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>How does Azure Resource Graph enhance Azure Policy?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph enhances Azure Policy by enabling large-scale policy compliance assessments and providing insights into resource configurations and compliance states.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>What is the benefit of using Azure Resource Graph for resource governance?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Resource Graph allows organizations to effectively manage and govern their Azure resources at scale, ensuring compliance and optimizing resource utilization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
