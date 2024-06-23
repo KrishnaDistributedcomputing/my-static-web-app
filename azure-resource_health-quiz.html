@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Service Health Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Service Health Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="b">
+                <label>1. What does Azure Service Health provide?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Real-time resource management</option>
+                    <option value="b">b) Personalized guidance and support for Azure service issues</option>
+                    <option value="c">c) Cost management for Azure services</option>
+                    <option value="d">d) Network performance optimization</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>2. Which of the following is NOT a component of Azure Service Health?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Azure status</option>
+                    <option value="b">b) Service health</option>
+                    <option value="c">c) Resource Health</option>
+                    <option value="d">d) Azure Pricing Calculator</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>3. What is the purpose of the Azure Status page?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) To provide a global view of the health of Azure services across all regions</option>
+                    <option value="b">b) To manage Azure subscriptions</option>
+                    <option value="c">c) To configure virtual networks</option>
+                    <option value="d">d) To monitor Azure cost management</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>4. Which of the following scenarios would use the Azure Status page for communication?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Broad impact involving multiple regions or services</option>
+                    <option value="b">b) Monitoring individual virtual machines</option>
+                    <option value="c">c) Managing Azure billing</option>
+                    <option value="d">d) Configuring virtual networks</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>5. What is the main function of Service Health in Azure Service Health?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) To provide a personalized view of the health of the Azure services and regions you are using</option>
+                    <option value="b">b) To configure Azure resources</option>
+                    <option value="c">c) To manage Azure billing</option>
+                    <option value="d">d) To optimize network performance</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>6. What information does Resource Health provide?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Real-time billing information</option>
+                    <option value="b">b) Health status of individual Azure resources such as virtual machines and databases</option>
+                    <option value="c">c) Global Azure service status</option>
+                    <option value="d">d) Azure resource pricing details</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>7. Which of the following best describes a "Health Advisory" in Azure Service Health?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Notifications about planned maintenance</option>
+                    <option value="b">b) Notifications about changes that require your attention but do not immediately affect your services</option>
+                    <option value="c">c) Notifications about Azure billing issues</option>
+                    <option value="d">d) Notifications about new Azure features</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>8. Which Azure Service Health component should be used to set up alerts for service health notifications?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Azure Cost Management</option>
+                    <option value="b">b) Azure Resource Health</option>
+                    <option value="c">c) Azure Service Health</option>
+                    <option value="d">d) Azure Security Center</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>9. How can you receive an alert when Azure sends service health notifications?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) By configuring alerts in Azure Monitor and selecting Service Health as the source</option>
+                    <option value="b">b) By setting up alerts in the Azure pricing calculator</option>
+                    <option value="c">c) By monitoring Azure billing information</option>
+                    <option value="d">d) By configuring alerts in Azure Network Watcher</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>10. What type of events can Service Health alerts notify you about?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">a) Azure billing updates</option>
+                    <option value="b">b) Service issues, planned maintenance, health advisories, and security advisories</option>
+                    <option value="c">c) Changes in Azure pricing</option>
+                    <option value="d">d) Network performance optimizations</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/service-health/" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
