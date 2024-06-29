@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Static Web Apps Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Static Web Apps Flashcards</h2>
+        <p>Test your knowledge about Azure Static Web Apps with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What front-end frameworks are supported by Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Angular, React, Svelte, Vue, Blazor, Gatsby, Hugo, Jekyll, Next.js, Nuxt.js, VuePress</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>How does Azure Static Web Apps integrate with developer workflows?</p>
+                        </div>
+                        <div class="back">
+                            <p>It integrates directly with GitHub or Azure DevOps to monitor branches, trigger builds, and deploy apps based on code changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>How does Azure Static Web Apps ensure fast content delivery?</p>
+                        </div>
+                        <div class="back">
+                            <p>Static assets are served from points geographically distributed around the world, ensuring faster delivery by being closer to end users.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What kind of API architecture does Azure Static Web Apps use?</p>
+                        </div>
+                        <div class="back">
+                            <p>It uses a serverless architecture, typically with managed Azure Functions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What kind of SSL certificate support does Azure Static Web Apps provide?</p>
+                        </div>
+                        <div class="back">
+                            <p>It provides free, automatically renewing SSL certificates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>Can you use custom domains with Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, custom domains are supported for branding and customization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>Which authentication providers can be integrated with Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Active Directory, GitHub, and Twitter.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What is the purpose of staging environments in Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Staging environments allow you to generate preview versions of your site powered by pull requests before publishing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>How does Azure Static Web Apps handle API security?</p>
+                        </div>
+                        <div class="back">
+                            <p>It uses a seamless security model with a reverse-proxy, which requires no CORS configuration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What type of content is hosted by Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>HTML, CSS, JavaScript, and image assets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>How is the build configuration managed in Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>It can be configured with GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What features are available for authentication and authorization in Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Customizable authorization role definitions and assignments, with preconfigured and custom authentication provider integrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How does Azure Static Web Apps integrate with Azure Functions?</p>
+                        </div>
+                        <div class="back">
+                            <p>Managed Azure Functions can be linked, or existing function apps can be connected using a standard account.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>Does Azure Static Web Apps support command-line tools?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, it supports the Azure CLI for cloud resource creation and the Azure Static Web Apps CLI for local development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What are the different pricing plans for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Free, Standard, and Dedicated (preview).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>How does Azure Static Web Apps handle scalability?</p>
+                        </div>
+                        <div class="back">
+                            <p>By globally distributing static content and using serverless APIs, it ensures scalability and performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>Which plan should you choose if your application requires regional data residency?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Dedicated plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>How is content delivered in Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Through points geographically distributed around the world for faster access.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What are the methods to deploy applications in Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Deployments can be triggered via GitHub Actions, Azure DevOps, or the Azure portal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>What extensions are available for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Extensions are available for Visual Studio Code to streamline development and deployment processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
