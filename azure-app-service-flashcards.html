@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Static Web Apps Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Static Web Apps Flashcards</h2>
+        <p>Test your knowledge about Azure Static Web Apps with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Static Web Apps allows you to build modern web applications that automatically publish to the web as your code changes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>How do you get started with Azure Static Web Apps without a front-end framework?</p>
+                        </div>
+                        <div class="back">
+                            <p>You can deploy an app with no front-end framework by following the quickstart guide provided in the Azure documentation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>How do you deploy an Angular app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>To deploy an Angular app, follow the steps to create an Angular app, configure GitHub Actions or Azure DevOps, and connect your repository to Azure Static Web Apps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>How do you deploy a React app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>You deploy a React app by creating the app, setting up a repository, and configuring the build and deployment process using GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>How do you deploy a Vue app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Deploy a Vue app by setting up your Vue project, linking your repository to Azure Static Web Apps, and configuring the build process with GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How do you deploy a Blazor app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>For deploying a Blazor app, create the Blazor WebAssembly app, configure the Azure Static Web Apps service, and set up continuous deployment through GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is the process for publishing an Angular, React, Svelte, or Vue JavaScript app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>The process includes setting up the application, connecting the repository to Azure, and configuring the deployment pipeline using GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>How do you publish a Blazor WebAssembly app and .NET API on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Publish by creating a Blazor WebAssembly app, adding an Azure Functions API, and configuring the deployment process with GitHub Actions or Azure DevOps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>How do you create and deploy a Gatsby app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Create a Gatsby app, set up the repository, and configure Azure Static Web Apps for continuous deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is Azure Functions in the context of Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Functions provide serverless APIs that can be integrated with Static Web Apps to add dynamic back-end functionality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>How do you configure build settings for Static Web Apps with GitHub Actions?</p>
+                        </div>
+                        <div class="back">
+                            <p>Configure build settings by setting up a GitHub repository, defining build and deploy workflows in GitHub Actions, and linking to Azure Static Web Apps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>How do you configure build settings for Static Web Apps with Azure DevOps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Configure with Azure DevOps by setting up pipelines, defining build and release stages, and connecting to Azure Static Web Apps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How do you create an Azure Static Web App using an ARM template?</p>
+                        </div>
+                        <div class="back">
+                            <p>Create using an ARM template by defining the static web app resources in a JSON file and deploying it through Azure Resource Manager.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What are the pricing plans available for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Static Web Apps offers a free tier with limited features and a standard tier with advanced capabilities and increased limits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What is the SLA for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Service Level Agreement (SLA) for Azure Static Web Apps guarantees a certain level of uptime and reliability, typically 99.95%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>How can you start building your first static site with Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Start by setting up your static site project, linking it to a GitHub repository, and configuring Azure Static Web Apps for deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What is the CLI tool for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Azure Static Web Apps CLI allows you to develop, build, and deploy static apps locally and provides commands to manage your static web app.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>How do you add an API to an Angular app on Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Add an API by creating Azure Functions within your Angular project, configuring the API routes, and deploying the functions alongside your static app.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>How do you create a Hugo app for Azure Static Web Apps?</p>
+                        </div>
+                        <div class="back">
+                            <p>Create a Hugo app by setting up a Hugo project, linking it to a GitHub repository, and configuring Azure Static Web Apps for continuous deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>How do you deploy an Angular app using the Azure CLI?</p>
+                        </div>
+                        <div class="back">
+                            <p>Deploy an Angular app using the Azure CLI by setting up the Angular project, linking it to an Azure Static Web Apps service, and Manage deployment using CLI commands.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
