@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Traffic Manager Flashcards</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Traffic Manager Flashcards</h2>
+        <p>Test your knowledge about Azure Traffic Manager with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Traffic Manager is a DNS-based traffic load balancer that improves the performance and availability of applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>At which layer does Traffic Manager operate?</p>
+                        </div>
+                        <div class="back">
+                            <p>Traffic Manager operates at the DNS level (Application layer, Layer-7).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What are the traffic-routing methods supported by Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Performance, Priority, Geographic, and Weighted methods.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>How does Traffic Manager ensure endpoint availability?</p>
+                        </div>
+                        <div class="back">
+                            <p>Traffic Manager continuously monitors the health of endpoints and performs automatic failovers when endpoints fail.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What are Traffic Manager profiles used for?</p>
+                        </div>
+                        <div class="back">
+                            <p>Profiles manage traffic and contain settings for endpoints and routing methods.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What types of endpoints does Traffic Manager support?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure, external, or nested endpoints.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>How should vanity domain names be configured with Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Vanity domain names must point to the Traffic Manager domain name using CNAME records.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What role do health checks play in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Health checks determine the current health of each endpoint, influencing traffic routing decisions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What is the recommended TTL for DNS records in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>The recommended TTL is 60 seconds for quick failover.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>How does Traffic Manager ensure only healthy endpoints receive traffic?</p>
+                        </div>
+                        <div class="back">
+                            <p>Through continuous endpoint monitoring.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>How does Traffic Manager handle endpoint failures?</p>
+                        </div>
+                        <div class="back">
+                            <p>It performs automatic failovers to the next best available endpoint.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What is the purpose of Geographic routing in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>To direct users to endpoints based on their geographic location, ensuring compliance and performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How does Weighted routing work in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>It distributes traffic based on assigned endpoint weights, allowing for proportional traffic distribution.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What does Priority routing in Traffic Manager do?</p>
+                        </div>
+                        <div class="back">
+                            <p>It sends traffic to the highest priority endpoint available, with lower priority endpoints as backups.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What is Performance routing in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>It directs traffic to the endpoint with the lowest latency, improving user experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What are the steps to set up Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Create a profile, add endpoints, and configure routing methods based on application requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>How can Traffic Manager configurations be managed?</p>
+                        </div>
+                        <div class="back">
+                            <p>Using Azure CLI commands for flexibility and automation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the benefit of using Azure DNS with Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>For seamless integration and simplified management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What are the management options for Traffic Manager profiles?</p>
+                        </div>
+                        <div class="back">
+                            <p>Profiles can be enabled, disabled, or deleted as needed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>Why is it important to test Traffic Manager configurations?</p>
+                        </div>
+                        <div class="back">
+                            <p>To ensure proper functionality and performance with multiple clients from various locations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(21)">
+                    <div class="flashcard" id="flashcard21">
+                        <div class="front">
+                            <p>How does DNSSEC enhance security in Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>DNSSEC protects against DNS spoofing attacks by ensuring DNS responses are authentic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(22)">
+                    <div class="flashcard" id="flashcard22">
+                        <div class="front">
+                            <p>What should be ensured for secure endpoint communication?</p>
+                        </div>
+                        <div class="back">
+                            <p>Ensure endpoints use HTTPS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(23)">
+                    <div class="flashcard" id="flashcard23">
+                        <div class="front">
+                            <p>How can Traffic Manager be integrated for continuous security monitoring?</p>
+                        </div>
+                        <div class="back">
+                            <p>Integrate with Azure Security Center.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(24)">
+                    <div class="flashcard" id="flashcard24">
+                        <div class="front">
+                            <p>How should permissions for Traffic Manager resources be managed?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use Azure Role-Based Access Control (RBAC).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(25)">
+                    <div class="flashcard" id="flashcard25">
+                        <div class="front">
+                            <p>What should be enabled to monitor Traffic Manager activities?</p>
+                        </div>
+                        <div class="back">
+                            <p>Enable diagnostic logging and metrics.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(26)">
+                    <div class="flashcard" id="flashcard26">
+                        <div class="front">
+                            <p>How can access to Traffic Manager endpoints be restricted?</p>
+                        </div>
+                        <div class="back">
+                            <p>Implement IP restrictions on endpoints.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(27)">
+                    <div class="flashcard" id="flashcard27">
+                        <div class="front">
+                            <p>What type of certificates should be used for Traffic Manager endpoints?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use SSL/TLS certificates to encrypt data in transit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(28)">
+                    <div class="flashcard" id="flashcard28">
+                        <div class="front">
+                            <p>Which Azure service can be integrated with Traffic Manager for added security?</p>
+                        </div>
+                        <div class="back">
+                            <p>Integrate with Azure Firewall.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(29)">
+                    <div class="flashcard" id="flashcard29">
+                        <div class="front">
+                            <p>What security practices should be followed for Traffic Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Follow Azure security best practices, including updates, assessments, and testing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(30)">
+                    <div class="flashcard" id="flashcard30">
+                        <div class="front">
+                            <p>What compliance standards should Traffic Manager configurations adhere to?</p>
+                        </div>
+                        <div class="back">
+                            <p>Ensure compliance with industry standards like GDPR, HIPAA, and ISO/IEC 27001.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
