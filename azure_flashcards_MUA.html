@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Flashcards: Managed User Access (MUA) in Azure Backup</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Flashcards: Managed User Access (MUA) in Azure Backup</h2>
+        <p>Test your knowledge about Managed User Access (MUA) in Azure Backup with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is the purpose of Managed User Access (MUA) in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>Managed User Access (MUA) provides an extra layer of security for critical tasks related to Recovery Services vaults and Backup vaults.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What Azure resource does MUA use to ensure critical tasks are executed with necessary authorization?</p>
+                        </div>
+                        <div class="back">
+                            <p>MUA uses the Resource Guard to ensure critical tasks are executed with necessary authorization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>How does the Resource Guard enhance security for Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Resource Guard serves as an additional authorization mechanism, ensuring critical tasks in Recovery Services and Backup vaults are performed only with necessary permissions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What are the two types of vaults that MUA applies to in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>MUA applies to Recovery Services vaults and Backup vaults.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>Can critical tasks be performed without permissions on the Resource Guard?</p>
+                        </div>
+                        <div class="back">
+                            <p>No, adequate permissions on the Resource Guard are required to perform critical tasks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What layer of security does MUA provide for Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>MUA provides an extra layer of security for crucial tasks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What must you have to successfully carry out a critical task in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>You must have adequate permissions on the corresponding Resource Guard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>Does MUA replace existing security measures in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>No, MUA enhances existing security measures by adding an additional layer of authorization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>Is the Resource Guard a separate resource in Azure?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, the Resource Guard is a separate Azure resource.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What tasks require authorization through the Resource Guard?</p>
+                        </div>
+                        <div class="back">
+                            <p>Critical tasks related to Recovery Services vaults and Backup vaults require authorization through the Resource Guard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>Why is having permissions on the Resource Guard important?</p>
+                        </div>
+                        <div class="back">
+                            <p>Permissions on the Resource Guard are important to ensure that only authorized users can perform critical tasks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What kind of tasks does MUA focus on securing?</p>
+                        </div>
+                        <div class="back">
+                            <p>MUA focuses on securing crucial tasks in Azure Backup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>Does the Resource Guard provide an additional mechanism for authorization?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, the Resource Guard provides an additional mechanism for authorization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>Can the Resource Guard be considered a secondary security check?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, the Resource Guard can be considered a secondary security check for critical tasks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What happens if you don't have adequate permissions on the Resource Guard?</p>
+                        </div>
+                        <div class="back">
+                            <p>You cannot successfully carry out critical tasks without adequate permissions on the Resource Guard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>Is the Resource Guard specific to Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, the Resource Guard is used specifically to enhance security for Azure Backup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What ensures that critical tasks in Backup vaults are authorized?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Resource Guard ensures that critical tasks in Backup vaults are authorized.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>Is MUA necessary for non-critical tasks in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>No, MUA is specifically designed for critical tasks in Azure Backup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What is the primary benefit of implementing MUA in Azure Backup?</p>
+                        </div>
+                        <div class="back">
+                            <p>The primary benefit is enhanced security for critical backup and recovery tasks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>Does MUA require additional permissions beyond the standard Azure Backup permissions?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, MUA requires additional permissions on the Resource Guard beyond standard Azure Backup permissions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
+	
