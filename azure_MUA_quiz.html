@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Backup MUA Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Backup MUA Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="c">
+                <label>1. What is the primary purpose of Multi-User Authorization (MUA) in the context of Azure Backup?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">To automate backup scheduling and retention policies.</option>
+                    <option value="b">To enable cross-region replication of backup data.</option>
+                    <option value="c">To provide an additional layer of security for critical backup operations.</option>
+                    <option value="d">To simplify the recovery of deleted backup vaults.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>2. Which Azure resource is central to the implementation of MUA for Azure Backup?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Key Vault</option>
+                    <option value="b">Azure Policy</option>
+                    <option value="c">Azure Resource Guard</option>
+                    <option value="d">Azure Security Center</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>3. What is the relationship between the Resource Guard and the Azure Backup vault in terms of ownership and permissions?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">The Resource Guard must be owned by the same user who owns the backup vault.</option>
+                    <option value="b">The Resource Guard must have Contributor permissions on the backup vault.</option>
+                    <option value="c">The Resource Guard must be owned by a different user, and the vault admin must NOT have Contributor permissions on it.</option>
+                    <option value="d">The Resource Guard and backup vault permissions are unrelated.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>4. List at least three critical operations on Azure Backup vaults that MUA protects.</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Backup, Restore, Delete backup data</option>
+                    <option value="b">Backup, Stop Protection, Delete backup data</option>
+                    <option value="c">Delete backup vault, Delete Backup Policy, Stop Protection with Delete data</option>
+                    <option value="d">Delete backup vault, Delete Resource Guard, Modify Backup Policy</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>5. Can you exclude certain critical operations from MUA protection? If so, how?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">No, all critical operations are automatically protected by MUA.</option>
+                    <option value="b">Yes, by creating a custom Azure Policy.</option>
+                    <option value="c">Yes, by modifying the permissions on the Resource Guard.</option>
+                    <option value="d">Yes, by disabling MUA on the backup vault.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>6. Explain the recommended placement of the Resource Guard for maximum security.</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">In the same subscription as the backup vault.</option>
+                    <option value="b">In a different subscription within the same Azure AD tenant.</option>
+                    <option value="c">In a different Azure AD tenant altogether.</option>
+                    <option value="d">Either b or c is recommended.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>7. How does Azure Privileged Identity Management (PIM) enhance the use of MUA?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">PIM automates the backup and recovery process.</option>
+                    <option value="b">PIM provides just-in-time (JIT) access to the Resource Guard.</option>
+                    <option value="c">PIM enforces multi-factor authentication (MFA) for backup operations.</option>
+                    <option value="d">PIM creates detailed audit logs of backup activity.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>8. What options exist for managing Just-In-Time (JIT) permissions on the Resource Guard?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Policy, Azure Automation, PowerShell scripts</option>
+                    <option value="b">Azure Policy, Azure Active Directory, PowerShell scripts</option>
+                    <option value="c">Azure Policy, Azure Privileged Identity Management, PowerShell scripts</option>
+                    <option value="d">Azure Policy, Azure Resource Manager templates, PowerShell scripts</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>9. How does MUA help mitigate the risks of unauthorized or malicious changes to backup configurations?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">By encrypting backup data at rest and in transit.</option>
+                    <option value="b">By requiring multiple approvals for critical operations.</option>
+                    <option value="c">By limiting access to backup data to authorized users.</option>
+                    <option value="d">By regularly scanning backup data for malware.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>10. In a multi-tenant scenario, how would you configure MUA to provide the highest level of isolation and protection?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Create a separate Resource Guard for each tenant.</option>
+                    <option value="b">Place the Resource Guard in a separate subscription from the backup vaults.</option>
+                    <option value="c">Use Azure AD Conditional Access to restrict access to backup resources.</option>
+                    <option value="d">All of the above.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/backup/multi-user-authorization" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
