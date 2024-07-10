@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure ExpressRoute Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure ExpressRoute Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="a">
+                <label>1. How does ExpressRoute ensure data security and compliance when connecting to on-premises networks?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute uses private connectivity that does not traverse the public internet, ensuring data privacy.</option>
+                    <option value="b">ExpressRoute connections are encrypted end-to-end by default, ensuring data security.</option>
+                    <option value="c">ExpressRoute requires compliance with industry standards like GDPR and HIPAA, ensuring regulatory compliance.</option>
+                    <option value="d">ExpressRoute leverages Azure Policy and Azure Blueprints to enforce security and compliance configurations.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>2. What are the key differences between Layer 2 and Layer 3 connectivity options for ExpressRoute, and how do they impact performance and security?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Layer 2 provides a direct Ethernet connection, while Layer 3 uses IP routing for connectivity.</option>
+                    <option value="b">Layer 2 is typically used for point-to-point connections, while Layer 3 supports more complex routing scenarios.</option>
+                    <option value="c">Layer 3 connectivity can include built-in BGP routing, enhancing routing flexibility and performance.</option>
+                    <option value="d">Layer 2 is generally considered less secure than Layer 3 because it lacks built-in encryption and routing controls.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>3. How does ExpressRoute handle routing complexities and ensure optimal data paths in multi-cloud and hybrid environments?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute uses Border Gateway Protocol (BGP) to manage routing between on-premises and Azure.</option>
+                    <option value="b">ExpressRoute automatically prioritizes data paths based on latency and bandwidth requirements.</option>
+                    <option value="c">ExpressRoute integrates with Azure Traffic Manager to optimize routing paths.</option>
+                    <option value="d">ExpressRoute supports custom route filtering to manage routing complexities in multi-cloud environments.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>4. What measures are in place to prevent and mitigate the impact of rate limiting on ExpressRoute circuits?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute circuits are monitored continuously to prevent exceeding rate limits.</option>
+                    <option value="b">Azure provides detailed documentation on configuring and managing rate limits for ExpressRoute.</option>
+                    <option value="c">ExpressRoute includes built-in traffic shaping mechanisms to manage data flow and prevent rate limiting.</option>
+                    <option value="d">Customers can purchase additional bandwidth or redundant circuits to avoid hitting rate limits.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>5. How does ExpressRoute integrate with other Azure services, such as Azure Monitor and Network Watcher, for network performance monitoring and diagnostics?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute provides built-in metrics that are accessible through Azure Monitor for performance tracking.</option>
+                    <option value="b">Network Watcher can be configured to monitor ExpressRoute connections for packet loss and latency.</option>
+                    <option value="c">Azure Monitor and Network Watcher can automatically generate alerts for anomalies in ExpressRoute performance.</option>
+                    <option value="d">Integration with Log Analytics allows for custom queries and dashboards to monitor ExpressRoute performance.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>6. What are the limitations of using ExpressRoute for VNet-to-VNet connectivity compared to VNet peering, and how can these limitations be addressed?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute may introduce higher latency compared to VNet peering, which is direct.</option>
+                    <option value="b">VNet peering supports transitive peering, which is not natively supported by ExpressRoute.</option>
+                    <option value="c">ExpressRoute connections can be more complex to configure and manage than VNet peering.</option>
+                    <option value="d">Limitations can be addressed by combining VNet peering with ExpressRoute for optimal performance and connectivity.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>7. How does ExpressRoute handle redundancy and failover to ensure high availability and reliability of network connections?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute supports redundant circuits to ensure failover in case of a primary circuit failure.</option>
+                    <option value="b">ExpressRoute leverages multiple physical connections to provide redundancy.</option>
+                    <option value="c">Customers can configure ExpressRoute with geo-redundant paths to enhance availability.</option>
+                    <option value="d">ExpressRoute integrates with Azure Load Balancer to manage failover and ensure high availability.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>8. What are the best practices for configuring BGP communities on Azure virtual networks to manage complex network architectures with ExpressRoute?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Use BGP communities to control route advertisements and traffic flow between VNets.</option>
+                    <option value="b">Configure BGP communities to prioritize specific routes for critical applications.</option>
+                    <option value="c">Implement BGP community tags to simplify route management in multi-VNet environments.</option>
+                    <option value="d">Regularly update BGP community configurations to reflect changes in network architecture and routing requirements.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>9. How does ExpressRoute Direct differ from standard ExpressRoute connections, and what scenarios are best suited for ExpressRoute Direct?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">ExpressRoute Direct provides a dedicated 100 Gbps connection, unlike standard connections.</option>
+                    <option value="b">ExpressRoute Direct offers enhanced security features suitable for highly sensitive data transfers.</option>
+                    <option value="c">Scenarios best suited for ExpressRoute Direct include large-scale data migrations and disaster recovery setups.</option>
+                    <option value="d">ExpressRoute Direct supports higher bandwidth and lower latency, making it ideal for high-performance computing applications.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>10. How can organizations optimize their network architecture for latency-sensitive applications when using ExpressRoute?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Utilize ExpressRoute Local to reduce the number of hops and lower latency.</option>
+                    <option value="b">Implement QoS policies to prioritize traffic for latency-sensitive applications.</option>
+                    <option value="c">Choose the closest Azure region to the on-premises network to minimize latency.</option>
+                    <option value="d">Use ExpressRoute Global Reach to connect multiple ExpressRoute circuits for optimized routing paths.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/expressroute/" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
