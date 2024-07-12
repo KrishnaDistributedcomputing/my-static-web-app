@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Flashcards: Virtual Desktop</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Flashcards: Virtual Desktop</h2>
+        <p>Test your knowledge about Azure Virtual Desktop with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Virtual Desktop (AVD)?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVD is a desktop and app virtualization service that runs on Azure, providing a full Windows experience with options for multi-session or single-session usage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What operating systems does Azure Virtual Desktop support?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVD supports Windows 11 Enterprise multi-session, Windows 11 Enterprise, Windows 10 Enterprise multi-session, Windows 10 Enterprise, Windows Server 2022, Windows Server 2019, and Windows Server 2016.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What are the two types of host pools in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>The two types of host pools are Personal host pools and Pooled host pools.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is the main benefit of using pooled host pools in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Pooled host pools provide a shared remote experience to end-users, ensuring lower costs and greater efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>How does Azure Virtual Desktop manage session hosts and virtual machines?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure manages the infrastructure roles like gateway and broker, while the customer manages session hosts, virtual network connectivity, resiliency, and backup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What is the purpose of the Azure Virtual Desktop Insights?</p>
+                        </div>
+                        <div class="back">
+                            <p>AVD Insights provide key metrics and analytics about the environment and user connections, helping in troubleshooting and optimization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What are the supported identity providers for Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Supported identity providers include Microsoft Entra ID, Active Directory Domain Services (AD DS), and Microsoft Entra Domain Services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What are the key capabilities of Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Key capabilities include multi-session Windows experience, pooled resources to reduce costs, auto-scaling, and integration with Microsoft 365 apps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What is FSLogix used for in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>FSLogix is used for profile management, allowing user profiles to be stored on Azure Files or Azure NetApp Files for flexible and persistent user data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What role does Azure Traffic Manager play in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Traffic Manager routes user devices to the closest instance of the AVD web service based on geographic traffic-routing methods.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What is the purpose of the Remote Desktop Protocol (RDP) Shortpath in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>RDP Shortpath improves user experience by establishing a direct UDP-based transport between the user's device and the session host, bypassing the gateway service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What are the Azure Virtual Desktop licensing options for internal users?</p>
+                        </div>
+                        <div class="back">
+                            <p>Internal users can use Microsoft 365 E3/E5/A3/A5, Windows Enterprise E3/E5, Windows Education A3/A5, or Windows VDA per user.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How does Azure Virtual Desktop handle application publishing?</p>
+                        </div>
+                        <div class="back">
+                            <p>Applications can be published individually using RemoteApp or as part of a full desktop experience from a host pool.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What is the role of Azure Front Door in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Front Door provides the global entry point to AVD, directing user connections to the appropriate gateway service based on latency.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What is an application group in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>An application group is a logical grouping of applications available on session hosts within a host pool, controlling user access to full desktops or individual apps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What is the purpose of a validation environment in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>A validation environment allows testing of service updates before they are applied to production environments, helping to identify potential issues.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What are the costs associated with Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Costs include Azure resource consumption (VMs, storage, network), licensing for Microsoft Entra ID or AD DS, and any additional features like AVD Insights or FSLogix.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the main use of autoscale in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Autoscale helps manage costs by automatically scaling session hosts based on capacity thresholds and schedules.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What is required for network connectivity in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>A virtual network and subnet for session hosts, ability to connect to domain controllers, and unrestricted access to specific Azure URLs over TCP port 443.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>What is the difference between active, disconnected, and pending user sessions in Azure Virtual Desktop?</p>
+                        </div>
+                        <div class="back">
+                            <p>Active sessions: signed in and connected users. Disconnected sessions: inactive without sign-out. Pending sessions: placeholders reserving spots..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
