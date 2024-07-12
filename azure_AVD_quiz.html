@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Virtual Desktop Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Virtual Desktop Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="a">
+                <label>1. What is Azure Virtual Desktop (AVD)?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">A desktop and app virtualization service that runs on Azure, providing a full Windows experience with options for multi-session or single-session usage.</option>
+                    <option value="b">A cloud storage service provided by Azure for backup and recovery.</option>
+                    <option value="c">A serverless computing platform for running applications.</option>
+                    <option value="d">A network management tool for monitoring and configuring networks.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>2. What operating systems does Azure Virtual Desktop support?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Windows 11 Enterprise multi-session, Windows 11 Enterprise, Windows 10 Enterprise multi-session, Windows 10 Enterprise, Windows Server 2022, Windows Server 2019, and Windows Server 2016.</option>
+                    <option value="b">Only Windows 10 Enterprise.</option>
+                    <option value="c">Linux distributions like Ubuntu and CentOS.</option>
+                    <option value="d">macOS and iOS only.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>3. What are the two types of host pools in Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Personal host pools and Pooled host pools.</option>
+                    <option value="b">Static host pools and Dynamic host pools.</option>
+                    <option value="c">Private host pools and Public host pools.</option>
+                    <option value="d">Internal host pools and External host pools.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>4. What is the main benefit of using pooled host pools in Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Pooled host pools provide a shared remote experience to end-users, ensuring lower costs and greater efficiency.</option>
+                    <option value="b">Pooled host pools are designed for single-user access only.</option>
+                    <option value="c">Pooled host pools offer unlimited storage capacity.</option>
+                    <option value="d">Pooled host pools guarantee 100% uptime.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>5. How does Azure Virtual Desktop manage session hosts and virtual machines?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure manages the infrastructure roles like gateway and broker, while the customer manages session hosts, virtual network connectivity, resiliency, and backup.</option>
+                    <option value="b">Customers manage all aspects including infrastructure roles and session hosts.</option>
+                    <option value="c">Azure manages everything including virtual network connectivity and resiliency.</option>
+                    <option value="d">Only Microsoft partners can manage the session hosts.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>6. What is the purpose of the Azure Virtual Desktop Insights?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">AVD Insights provide key metrics and analytics about the environment and user connections, helping in troubleshooting and optimization.</option>
+                    <option value="b">AVD Insights is used for billing and subscription management.</option>
+                    <option value="c">AVD Insights is a tool for managing virtual machine images.</option>
+                    <option value="d">AVD Insights helps in monitoring storage usage.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>7. What are the supported identity providers for Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Supported identity providers include Microsoft Entra ID, Active Directory Domain Services (AD DS), and Microsoft Entra Domain Services.</option>
+                    <option value="b">Only Microsoft Entra ID is supported.</option>
+                    <option value="c">Only Active Directory Domain Services (AD DS) is supported.</option>
+                    <option value="d">Any identity provider can be used.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>8. What are the key capabilities of Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Key capabilities include multi-session Windows experience, pooled resources to reduce costs, auto-scaling, and integration with Microsoft 365 apps.</option>
+                    <option value="b">Key capabilities include unlimited data storage and free backups.</option>
+                    <option value="c">Key capabilities include network monitoring and traffic shaping.</option>
+                    <option value="d">Key capabilities include direct hardware access and GPU acceleration.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>9. What is FSLogix used for in Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">FSLogix is used for profile management, allowing user profiles to be stored on Azure Files or Azure NetApp Files for flexible and persistent user data.</option>
+                    <option value="b">FSLogix is used for managing network connections.</option>
+                    <option value="c">FSLogix is used for configuring virtual machines.</option>
+                    <option value="d">FSLogix is used for billing and subscription management.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>10. What role does Azure Traffic Manager play in Azure Virtual Desktop?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Traffic Manager routes user devices to the closest instance of the AVD web service based on geographic traffic-routing methods.</option>
+                    <option value="b">Azure Traffic Manager monitors network traffic for security threats.</option>
+                    <option value="c">Azure Traffic Manager manages DNS records for Azure services.</option>
+                    <option value="d">Azure Traffic Manager provides detailed analytics about user behavior.</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/virtual-desktop/" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
