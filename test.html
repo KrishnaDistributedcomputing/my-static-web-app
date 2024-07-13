@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Azure System Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Secure Azure System Design</h1>
+    <div class="form-group">
+        <label for="region">Region:</label>
+        <input type="text" id="region" placeholder="e.g., Canada Central">
+    </div>
+    <div class="form-group">
+        <label for="traffic_management">Traffic Management:</label>
+        <input type="text" id="traffic_management" placeholder="e.g., Akamai">
+    </div>
+    <div class="form-group">
+        <label for="data_handling">Data Handling:</label>
+        <input type="text" id="data_handling" placeholder="e.g., Millions of requests">
+    </div>
+    <div class="form-group">
+        <label for="billing">Billing:</label>
+        <input type="text" id="billing" placeholder="e.g., Enabled">
+    </div>
+    <button onclick="designSystem()">Design System</button>
+    <div id="output"></div>
+
+    <script>
+        function designSystem() {
+            const components = {
+                apim_internal: "API Management Service for internal traffic",
+                azure_storage: "Azure Storage Account",
+                aks: "Azure Kubernetes Service",
+                apim_external: "API Management Service for external traffic",
+                security: ["Azure Defender", "Azure AD", "Logging", "Monitoring"]
+            };
+
+            const requirements = {
+                region: document.getElementById('region').value,
+                traffic_management: document.getElementById('traffic_management').value,
+                data_handling: document.getElementById('data_handling').value,
+                billing: document.getElementById('billing').value
+            };
+
+            const systemDesign = `
+                <h2>System Design</h2>
+                <ol>
+                    <li>Set up ${components.apim_internal} in ${requirements.region} to manage inbound traffic and route it to ${components.azure_storage}.</li>
+                    <li>Configure ${components.azure_storage} to securely store data pushed by external customers.</li>
+                    <li>Deploy ${components.aks} to process data, ensuring each container hosts customer-specific logos and information.</li>
+                    <li>Set up ${components.apim_external} to expose processed data to external customers with ${requirements.billing} controls.</li>
+                    <li>Integrate ${components.security.join(', ')} for comprehensive security.</li>
+                </ol>
+            `;
+
+            document.getElementById('output').innerHTML = systemDesign;
+        }
+    </script>
+</body>
+</html>
