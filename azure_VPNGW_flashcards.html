@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Flashcards: VPN Gateway</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Flashcards: VPN Gateway</h2>
+        <p>Test your knowledge about Azure VPN Gateway with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure VPN Gateway?</p>
+                        </div>
+                        <div class="back">
+                            <p>A service for encrypted traffic between Azure VNets and on-premises locations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What is Site-to-Site (S2S) VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Connects on-premises network to Azure VNet using IPsec/IKE VPN tunnel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What is Point-to-Site (P2S) VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Connects individual client computers to Azure VNet over SSTP, IKEv2, or OpenVPN protocols.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is VNet-to-VNet VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Connects Azure VNets to each other using IPsec/IKE VPN tunnels.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What does Gateway SKU define?</p>
+                        </div>
+                        <div class="back">
+                            <p>Defines the VPN Gateway's capabilities, including number of tunnels, throughput, and features.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>What is a Gateway Subnet?</p>
+                        </div>
+                        <div class="back">
+                            <p>A dedicated subnet for VPN Gateway within your VNet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is BGP?</p>
+                        </div>
+                        <div class="back">
+                            <p>BGP - Border Gateway protocol.Enables dynamic routing by exchanging routing information between Azure VPN Gateway and on-premises routers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What is Active-Active Mode?</p>
+                        </div>
+                        <div class="back">
+                            <p>A high-availability configuration using two VPN Gateways in an active-active setup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What is IPsec/IKE VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Protocols for establishing secure VPN tunnels. IPsec provides encryption and IKE negotiates security associations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is ExpressRoute?</p>
+                        </div>
+                        <div class="back">
+                            <p>Provides a dedicated private connection to Azure, bypassing the public internet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What is Route-Based VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Uses dynamic routing protocols to manage network traffic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What is Policy-Based VPN?</p>
+                        </div>
+                        <div class="back">
+                            <p>Uses static routing configurations, ideal for simpler, smaller networks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>What is a Shared Key?</p>
+                        </div>
+                        <div class="back">
+                            <p>A secret key used for establishing VPN connections.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What is IKEv2 Protocol?</p>
+                        </div>
+                        <div class="back">
+                            <p>A secure and efficient VPN protocol supported by Azure VPN Gateway.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>What is OpenVPN Protocol?</p>
+                        </div>
+                        <div class="back">
+                            <p>An open-source, secure VPN protocol supported by Azure VPN Gateway.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What is a Gateway Public IP?</p>
+                        </div>
+                        <div class="back">
+                            <p>A static public IP address assigned to the VPN Gateway for external connections.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What is a Local Network Gateway?</p>
+                        </div>
+                        <div class="back">
+                            <p>Represents the on-premises location in Azure, including the public IP address of the VPN device and the on-premises address space.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What does Gateway Configuration involve?</p>
+                        </div>
+                        <div class="back">
+                            <p>Setting up VPN types, choosing SKUs, configuring BGP, and other parameters.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What is a Network Security Group (NSG)?</p>
+                        </div>
+                        <div class="back">
+                            <p>Not supported on the Gateway Subnet as it can disrupt VPN and ExpressRoute gateway functionality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>What is Azure Bastion?</p>
+                        </div>
+                        <div class="back">
+                            <p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
