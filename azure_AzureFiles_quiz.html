@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Files Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Files Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="SMB, NFS, Azure Files REST API">
+                <label>1. What protocols does Azure Files support for mounting file shares?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="SMB, NFS, Azure Files REST API">SMB, NFS, Azure Files REST API</option>
+                    <option value="FTP, HTTP, SMB">FTP, HTTP, SMB</option>
+                    <option value="NFS, HTTP, Azure Files REST API">NFS, HTTP, Azure Files REST API</option>
+                    <option value="SMB, FTP, NFS">SMB, FTP, NFS</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Seamless access, integration with AD, local caching, reduced maintenance">
+                <label>2. Describe the benefits of using Azure Files to replace traditional on-premises file servers.</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="No need for centralized access control">No need for centralized access control</option>
+                    <option value="Requires managing hardware">Requires managing hardware</option>
+                    <option value="Provides local caching with reduced performance">Provides local caching with reduced performance</option>
+                    <option value="Seamless access, integration with AD, local caching, reduced maintenance">Seamless access, integration with AD, local caching, reduced maintenance</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Move applications and data to Azure without redesigning">
+                <label>3. Explain the 'lift and shift' scenario and how Azure Files facilitates this process.</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Move applications and data to Azure without redesigning">Move applications and data to Azure without redesigning</option>
+                    <option value="Requires redesigning applications">Requires redesigning applications</option>
+                    <option value="Only moves applications to the cloud">Only moves applications to the cloud</option>
+                    <option value="Only moves data to the cloud">Only moves data to the cloud</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Centralizes file shares, fast local access, synchronization, disaster recovery">
+                <label>4. What are the primary uses of Azure File Sync in conjunction with SMB Azure file shares?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Provides cloud-only access to files">Provides cloud-only access to files</option>
+                    <option value="Centralizes file shares, fast local access, synchronization, disaster recovery">Centralizes file shares, fast local access, synchronization, disaster recovery</option>
+                    <option value="Only supports Linux clients">Only supports Linux clients</option>
+                    <option value="Does not support caching">Does not support caching</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="SMB supports Windows, Linux, and macOS; NFS primarily for Linux">
+                <label>5. What are the key differences between SMB and NFS Azure file shares?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="SMB supports POSIX-compliant permissions">SMB supports POSIX-compliant permissions</option>
+                    <option value="NFS integrates with Active Directory">NFS integrates with Active Directory</option>
+                    <option value="SMB supports Windows, Linux, and macOS; NFS primarily for Linux">SMB supports Windows, Linux, and macOS; NFS primarily for Linux</option>
+                    <option value="NFS can be accessed over the internet">NFS can be accessed over the internet</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="SMB 3.x with encryption, Azure Storage Service Encryption (SSE)">
+                <label>6. How does Azure Files ensure encryption in transit and at rest for SMB file shares?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="SMB 3.x with encryption, Azure Storage Service Encryption (SSE)">SMB 3.x with encryption, Azure Storage Service Encryption (SSE)</option>
+                    <option value="Only HTTPS connections">Only HTTPS connections</option>
+                    <option value="Encryption is optional">Encryption is optional</option>
+                    <option value="Only during data transfer">Only during data transfer</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="LRS, ZRS, GRS, GZRS with varying levels of protection">
+                <label>7. What are the available redundancy options for Azure file shares, and how do they differ?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Only supports LRS">Only supports LRS</option>
+                    <option value="Supports ZRS and GRS only">Supports ZRS and GRS only</option>
+                    <option value="No redundancy options">No redundancy options</option>
+                    <option value="LRS, ZRS, GRS, GZRS with varying levels of protection">LRS, ZRS, GRS, GZRS with varying levels of protection</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Detects threats, generates alerts, no performance impact, configurable at various levels">
+                <label>8. Describe the process and benefits of enabling Microsoft Defender for Storage with Azure Files.</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="No impact on storage performance">No impact on storage performance</option>
+                    <option value="Detects threats, generates alerts, no performance impact, configurable at various levels">Detects threats, generates alerts, no performance impact, configurable at various levels</option>
+                    <option value="Only detects malware">Only detects malware</option>
+                    <option value="Requires additional hardware">Requires additional hardware</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Create file share, obtain storage account name and key, use 'net use' command">
+                <label>9. What steps are involved in creating and mounting an SMB Azure file share on a Windows client?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="Only need the storage account name">Only need the storage account name</option>
+                    <option value="No need for Azure portal access">No need for Azure portal access</option>
+                    <option value="Cannot use PowerShell">Cannot use PowerShell</option>
+                    <option value="Create file share, obtain storage account name and key, use 'net use' command">Create file share, obtain storage account name and key, use 'net use' command</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="Creates snapshots, manages retention, supports recovery to original or alternate location">
+                <label>10. How does Azure Backup for Azure file shares handle snapshots and data recovery?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="No support for snapshots">No support for snapshots</option>
+                    <option value="Creates snapshots, manages retention, supports recovery to original or alternate location">Creates snapshots, manages retention, supports recovery to original or alternate location</option>
+                    <option value="Snapshots are not incremental">Snapshots are not incremental</option>
+                    <option value="Cannot be managed via the Azure portal">Cannot be managed via the Azure portal</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/virtual-desktop/" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
