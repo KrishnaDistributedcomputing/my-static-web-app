@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Questions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .page {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        p, ul {
+            font-size: 18px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 20px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Questions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .page {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        p, ul {
+            font-size: 18px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 20px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="page" id="page1">
+        <h1>Category: AZ305 – Design Data Storage Solutions</h1>
+        <p>You have an application named Manila running on an Azure virtual machine scale set. The data used by the application is stored in a SQL Server on Azure Virtual Machines. The application is not used 24/7.</p>
+        <p>You need to recommend a disaster recovery solution for the SQL database server. The solution must meet the following requirements:</p>
+        <ul>
+            <li>The recovery time objective (RTO) should be within 30 minutes.</li>
+            <li>The recovery point objective (RPO) should be within 8 hours.</li>
+            <li>Must ensure the capability to restore service in the case of a regional failure.</li>
+            <li>Minimize costs.</li>
+        </ul>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm1">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option1-1" name="recommendation" value="Implement SQL Server Always On Availability Groups">
+                    <label for="option1-1">Implement SQL Server Always On Availability Groups.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option1-2" name="recommendation" value="Implement availability sets">
+                    <label for="option1-2">Implement availability sets.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option1-3" name="recommendation" value="Use Azure Backup to backup the SQL server daily">
+                    <label for="option1-3">Use Azure Backup to backup the SQL server daily.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option1-4" name="recommendation" value="Use Azure Site Recovery for the SQL server">
+                    <label for="option1-4">Use Azure Site Recovery for the SQL server.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm1', 'Use Azure Site Recovery for the SQL server')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <div class="page d-none" id="page2">
+        <h1>Category: AZ104 – Manage Azure Identities and Governance</h1>
+        <p>Question 1: You manage an Azure Active Directory (Azure AD) tenant named Contoso. The organization has strict security policies requiring multi-factor authentication (MFA) for all users accessing Azure resources.</p>
+        <p>You need to recommend a solution to enforce MFA for all users accessing the Azure portal.</p>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm2">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option2-1" name="recommendation" value="Configure a conditional access policy in Azure AD">
+                    <label for="option2-1">Configure a conditional access policy in Azure AD.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option2-2" name="recommendation" value="Enable Security Defaults in Azure AD">
+                    <label for="option2-2">Enable Security Defaults in Azure AD.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option2-3" name="recommendation" value="Implement an Azure AD Privileged Identity Management (PIM) policy">
+                    <label for="option2-3">Implement an Azure AD Privileged Identity Management (PIM) policy.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option2-4" name="recommendation" value="Use Azure AD B2C">
+                    <label for="option2-4">Use Azure AD B2C.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm2', 'Configure a conditional access policy in Azure AD')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback2" class="feedback"></div>
+    </div>
+
+    <div class="page d-none" id="page3">
+        <h1>Category: AZ104 – Implement and Manage Storage</h1>
+        <p>Question 2: Your company has a web application hosted on Azure App Service. The application stores user-uploaded images in Azure Blob Storage. You need to ensure that the images are accessible even if a complete Azure region becomes unavailable.</p>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm3">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option3-1" name="recommendation" value="Enable Geo-Redundant Storage (GRS) for the storage account">
+                    <label for="option3-1">Enable Geo-Redundant Storage (GRS) for the storage account.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option3-2" name="recommendation" value="Configure Read-Access Geo-Redundant Storage (RA-GRS)">
+                    <label for="option3-2">Configure Read-Access Geo-Redundant Storage (RA-GRS).</label>
+                </li>
+                <li>
+                    <input type="radio" id="option3-3" name="recommendation" value="Use Zone-Redundant Storage (ZRS)">
+                    <label for="option3-3">Use Zone-Redundant Storage (ZRS).</label>
+                </li>
+                <li>
+                    <input type="radio" id="option3-4" name="recommendation" value="Implement Azure Site Recovery for the storage account">
+                    <label for="option3-4">Implement Azure Site Recovery for the storage account.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm3', 'Configure Read-Access Geo-Redundant Storage (RA-GRS)')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback3" class="feedback"></div>
+    </div>
+
+    <div class="page d-none" id="page4">
+        <h1>Category: AZ204 – Develop Azure Compute Solutions</h1>
+        <p>Question 3: You are developing a microservices-based application that will be hosted on Azure Kubernetes Service (AKS). The application must be able to handle sudden spikes in traffic.</p>
+        <p>You need to recommend a solution to automatically scale the application based on demand.</p>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm4">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option4-1" name="recommendation" value="Configure Horizontal Pod Autoscaler (HPA)">
+                    <label for="option4-1">Configure Horizontal Pod Autoscaler (HPA).</label>
+                </li>
+                <li>
+                    <input type="radio" id="option4-2" name="recommendation" value="Implement Azure Traffic Manager">
+                    <label for="option4-2">Implement Azure Traffic Manager.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option4-3" name="recommendation" value="Use Azure Virtual Machine Scale Sets">
+                    <label for="option4-3">Use Azure Virtual Machine Scale Sets.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option4-4" name="recommendation" value="Enable Kubernetes Cluster Autoscaler">
+                    <label for="option4-4">Enable Kubernetes Cluster Autoscaler.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm4', 'Configure Horizontal Pod Autoscaler (HPA)')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback4" class="feedback"></div>
+    </div>
+
+    <div class="page d-none" id="page5">
+        <h1>Category: AZ500 – Implement and Manage Network Security</h1>
+        <p>Question 4: Your organization has deployed a critical application on Azure Virtual Machines. You need to restrict network traffic to only allow specific IP ranges to access the VMs while minimizing administrative overhead.</p>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm5">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option5-1" name="recommendation" value="Configure Network Security Groups (NSGs) with appropriate rules">
+                    <label for="option5-1">Configure Network Security Groups (NSGs) with appropriate rules.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option5-2" name="recommendation" value="Implement Azure Firewall">
+                    <label for="option5-2">Implement Azure Firewall.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option5-3" name="recommendation" value="Use Azure Bastion for secure access">
+                    <label for="option5-3">Use Azure Bastion for secure access.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option5-4" name="recommendation" value="Set up a VPN gateway with IP whitelisting">
+                    <label for="option5-4">Set up a VPN gateway with IP whitelisting.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm5', 'Configure Network Security Groups (NSGs) with appropriate rules')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback5" class="feedback"></div>
+    </div>
+
+    <div class="page d-none" id="page6">
+        <h1>Category: AZ304 – Design Identity and Security</h1>
+        <p>Question 5: You are designing a security solution for an application hosted on Azure. The application needs to securely store secrets, keys, and certificates.</p>
+        <p>You need to recommend a solution to meet these requirements.</p>
+        <p>What should you include in the recommendation?</p>
+        <form id="quizForm6">
+            <ul class="options">
+                <li>
+                    <input type="radio" id="option6-1" name="recommendation" value="Use Azure Key Vault">
+                    <label for="option6-1">Use Azure Key Vault.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option6-2" name="recommendation" value="Implement Managed Identities for Azure resources">
+                    <label for="option6-2">Implement Managed Identities for Azure resources.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option6-3" name="recommendation" value="Store secrets in Azure Blob Storage">
+                    <label for="option6-3">Store secrets in Azure Blob Storage.</label>
+                </li>
+                <li>
+                    <input type="radio" id="option6-4" name="recommendation" value="Use Azure AD Identity Protection">
+                    <label for="option6-4">Use Azure AD Identity Protection.</label>
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="checkAnswer('quizForm6', 'Use Azure Key Vault')">Check</button>
+                <button type="button" class="btn btn-secondary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+        <div id="feedback6" class="feedback"></div>
+    </div>
+
+     
+
+
+<script>
+    const answers = {
+        "quizForm1": "Use Azure Site Recovery for the SQL server",
+        // Add the rest of the correct answers here
+    };
+
+    function checkAnswer(formId, correctAnswer) {
+        const form = document.getElementById(formId);
+        const selectedOption = form.querySelector('input[name="recommendation"]:checked');
+        const feedback = document.getElementById('feedback' + formId.replace('quizForm', ''));
+
+        if (selectedOption) {
+            if (selectedOption.value === correctAnswer) {
+                feedback.innerHTML = '<div class="alert alert-success">Correct!</div>';
+            } else {
+                feedback.innerHTML = '<div class="alert alert-danger">Incorrect. The correct answer is "' + correctAnswer + '".</div>';
+            }
+        } else {
+            feedback.innerHTML = '<div class="alert alert-warning">Please select an option.</div>';
+        }
+    }
+
+    let currentPage = 1;
+    const totalPages = document.querySelectorAll('.page').length;
+
+    function showPage(page) {
+        document.querySelector(`#page${currentPage}`).classList.add('d-none');
+        document.querySelector(`#page${page}`).classList.remove('d-none');
+        currentPage = page;
+    }
+
+    function nextPage() {
+        if (currentPage < totalPages) {
+            showPage(currentPage + 1);
+        }
+    }
+
+    function previousPage() {
+        if (currentPage > 1) {
+            showPage(currentPage - 1);
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
