@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquee Text from Internet</title>
+</head>
+<body>
+    <h1>Marquee Text from Internet</h1>
+    <marquee behavior="scroll" direction="left" id="marqueeText">Loading...</marquee>
+
+    <script>
+        fetch('https://api.example.com/getText')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('marqueeText').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error fetching text:', error);
+                document.getElementById('marqueeText').innerText = 'Failed to load text.';
+            });
+    </script>
+</body>
+</html>
