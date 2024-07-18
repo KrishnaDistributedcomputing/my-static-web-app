@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Traffic Manager Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Traffic Manager Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="c">
+                <label>1. What does Azure Traffic Manager operate at to direct clients to specific service endpoints?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Network layer (Layer-3)</option>
+                    <option value="b">Data link layer (Layer-2)</option>
+                    <option value="c">DNS level (Application layer, Layer-7)</option>
+                    <option value="d">Transport layer (Layer-4)</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>2. Which of the following is NOT a traffic-routing method supported by Azure Traffic Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Performance</option>
+                    <option value="b">Round Robin</option>
+                    <option value="c">Priority</option>
+                    <option value="d">Geographic</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>3. What is the recommended TTL (Time to Live) setting for DNS records to ensure quick failover?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">10 seconds</option>
+                    <option value="b">30 seconds</option>
+                    <option value="c">60 seconds</option>
+                    <option value="d">120 seconds</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>4. Which feature of Azure Traffic Manager helps in ensuring traffic is only directed to healthy endpoints?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Geo-Redundancy</option>
+                    <option value="b">Endpoint Monitoring</option>
+                    <option value="c">Latency Checks</option>
+                    <option value="d">Load Balancing</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>5. What type of routing method should be used in Azure Traffic Manager to send traffic to the highest priority endpoint available?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Performance Routing</option>
+                    <option value="b">Geographic Routing</option>
+                    <option value="c">Priority Routing</option>
+                    <option value="d">Weighted Routing</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>6. Which protocol should be used for endpoint monitoring to ensure secure communication in Azure Traffic Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">HTTP</option>
+                    <option value="b">FTP</option>
+                    <option value="c">SMTP</option>
+                    <option value="d">HTTPS</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>7. What integration can be used with Azure Traffic Manager for continuous security monitoring and threat detection?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Monitor</option>
+                    <option value="b">Azure Security Center</option>
+                    <option value="c">Azure Key Vault</option>
+                    <option value="d">Azure Advisor</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>8. What Azure feature should be used to manage permissions for Traffic Manager resources to ensure only authorized users can make changes?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Policy</option>
+                    <option value="b">Azure Active Directory</option>
+                    <option value="c">Azure Role-Based Access Control (RBAC)</option>
+                    <option value="d">Azure Security Groups</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>9. Which of the following can be used to encrypt data in transit between clients and endpoints in Azure Traffic Manager?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">DNSSEC</option>
+                    <option value="b">SSL/TLS Certificates</option>
+                    <option value="c">VPN</option>
+                    <option value="d">IPsec</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>10. What should be enabled to monitor Azure Traffic Manager activities and detect any anomalies or security breaches?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Diagnostic Logging and Metrics</option>
+                    <option value="b">Azure Policy Compliance</option>
+                    <option value="c">Network Security Groups</option>
+                    <option value="d">Traffic Manager Endpoint Monitoring</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/service-health/" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
