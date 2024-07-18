@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Flashcards: Azure Update Manager</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Flashcards: Azure Update Manager</h2>
+        <p>Test your knowledge about Azure Update Manager with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What is Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager is a unified service to manage and govern updates for all machines across Azure, on-premises, and other cloud platforms from a single dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What are the key benefits of using Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Monitoring update compliance, deploying critical updates, flexible patching options, and a native experience without Azure Automation or Log Analytics dependencies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>What types of updates can Azure Update Manager handle?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager handles operating system updates for both Windows and Linux machines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is the purpose of the Update Manager extension?</p>
+                        </div>
+                        <div class="back">
+                            <p>The extension interacts with the operating system to manage the assessment and application of updates, automatically installed during Update Manager operations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What feature allows scheduling updates for Azure machines?</p>
+                        </div>
+                        <div class="back">
+                            <p>The "Schedule recurring updates" feature in Azure Update Manager allows scheduling updates for Azure machines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How does Azure Update Manager ensure machine security?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager secures machines by supporting automatic VM guest patching, hotpatching, and custom maintenance schedules.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What is the role of the Azure VM Windows agent in Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Azure VM Windows agent installs and manages the Update Manager extension for Azure VMs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What are the prerequisites for using Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Prerequisites include proper role assignments like Azure Virtual Machine Contributor or Azure Connected Machine Resource Administrator and ensuring the target machines meet specific OS requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>What regions support Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager is supported globally in all Azure compute and Azure Arc regions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>How is update compliance data stored in Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Update compliance data is stored in Azure Resource Graph.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What happens when the Azure Log Analytics agent is retired?</p>
+                        </div>
+                        <div class="back">
+                            <p>The Azure Automation Update Management solution relying on this agent will encounter issues, so users are encouraged to move to Azure Update Manager.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What is Dynamic Scoping in Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Dynamic Scoping is an advanced capability that allows creating groups of machines based on a schedule to apply patches at scale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>Can Azure Update Manager manage updates for custom images?</p>
+                        </div>
+                        <div class="back">
+                            <p>Yes, Azure Update Manager supports managing updates for VMs created from customized images.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What update sources are supported by Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Supported update sources include Microsoft Update, Windows Server Update Services (WSUS), and public or local YUM or APT repositories for Linux.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>How does Azure Update Manager handle periodic assessments?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager can automatically assess machines for pending updates every 24 hours using periodic assessment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What are the supported operating systems for Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Supported operating systems include various versions of Windows Server and Linux distributions such as Oracle Linux, Red Hat Enterprise, SUSE Linux, and Ubuntu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What does the term "hotpatching" refer to in Azure Update Manager?</p>
+                        </div>
+                        <div class="back">
+                            <p>Hotpatching refers to a method of patching that reduces the need for reboots by applying updates without restarting the machine.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>What is the pricing for Azure Update Manager on Arc-enabled servers?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager is charged at $5 per server per month for Arc-enabled servers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What feature does Azure Update Manager provide for managing update schedules at scale?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Update Manager provides the "Schedule patching" feature for managing update schedules at scale using Azure Policy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>Can Azure Update Manager integrate with Azure Lighthouse?</p>
+                        </div>
+                        <div class="back">
+                            <p>Currently, Azure Update Manager does not support integration with Azure Lighthouse.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
