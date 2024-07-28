@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Flashcards: Azure Files</title>
+    <style>
+        .flashcard-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-box {
+            border: 1px solid #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 250px;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+        }
+
+        .flashcard-box:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            color: white;
+            border: 2px solid #333;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flashcard.flip {
+            transform: rotateY(180deg);
+            color: blue;
+        }
+
+        .flashcard .front,
+        .flashcard .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .flashcard .front {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        .flashcard .back {
+            background-color: #f9f9f9;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard p {
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .flashcard-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Azure Flashcards: Azure Files</h2>
+        <p>Test your knowledge about Azure Files with these flashcards. Click on a card to reveal the answer.</p>
+        <button class="btn btn-primary mb-3" onclick="shuffleFlashcards()">Shuffle</button>
+        <button class="btn btn-secondary mb-3" onclick="resetFlashcards()">Reset Flashcards</button>
+        <div class="flashcard-container">
+            <div class="flashcard-types" id="flashcard-container">
+                <div class="flashcard-box" onclick="flipCard(1)">
+                    <div class="flashcard" id="flashcard1">
+                        <div class="front">
+                            <p>What protocols does Azure Files support for accessing file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Files supports SMB, NFS, and Azure Files REST API.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(2)">
+                    <div class="flashcard" id="flashcard2">
+                        <div class="front">
+                            <p>What are some common use cases for Azure Files?</p>
+                        </div>
+                        <div class="back">
+                            <p>Common use cases include replacing on-premises file servers, cloud applications, and dev/test environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(3)">
+                    <div class="flashcard" id="flashcard3">
+                        <div class="front">
+                            <p>How does Azure File Sync enhance the performance of SMB Azure file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure File Sync caches frequently accessed data on-premises for faster access.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(4)">
+                    <div class="flashcard" id="flashcard4">
+                        <div class="front">
+                            <p>What is the recommended OS for using NFS Azure file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Recommended OS are Linux with kernel version 4.3+ and 5.3+ for enhanced features.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(5)">
+                    <div class="flashcard" id="flashcard5">
+                        <div class="front">
+                            <p>What is the difference between LRS and GRS?</p>
+                        </div>
+                        <div class="back">
+                            <p>LRS stores three copies of data within one region; GRS replicates data to a secondary region.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(6)">
+                    <div class="flashcard" id="flashcard6">
+                        <div class="front">
+                            <p>How does Azure Files ensure data encryption at rest?</p>
+                        </div>
+                        <div class="back">
+                            <p>All data is encrypted using Azure storage service encryption (SSE).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(7)">
+                    <div class="flashcard" id="flashcard7">
+                        <div class="front">
+                            <p>What are the benefits of using Premium file shares over Standard file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Premium file shares offer SSD storage, providing low latency and higher IOPS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(8)">
+                    <div class="flashcard" id="flashcard8">
+                        <div class="front">
+                            <p>What is the primary use of the Azure Files REST API?</p>
+                        </div>
+                        <div class="back">
+                            <p>It is used for programmatically managing Azure file shares.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(9)">
+                    <div class="flashcard" id="flashcard9">
+                        <div class="front">
+                            <p>How does Azure Files handle network isolation for security?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Files can be accessed via private or service endpoints.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(10)">
+                    <div class="flashcard" id="flashcard10">
+                        <div class="front">
+                            <p>What is the maximum number of snapshots allowed per Azure file share?</p>
+                        </div>
+                        <div class="back">
+                            <p>Up to 200 snapshots per file share, with retention up to 10 years.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(11)">
+                    <div class="flashcard" id="flashcard11">
+                        <div class="front">
+                            <p>What are the benefits of using Azure Files in a hybrid environment?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Files supports hybrid deployments and on-premises caching with Azure File Sync.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(12)">
+                    <div class="flashcard" id="flashcard12">
+                        <div class="front">
+                            <p>What are the available redundancy options for Azure Files?</p>
+                        </div>
+                        <div class="back">
+                            <p>Options include LRS, ZRS, GRS, and GZRS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(13)">
+                    <div class="flashcard" id="flashcard13">
+                        <div class="front">
+                            <p>How does Azure Files support identity-based authentication?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Files supports AD DS, Microsoft Entra Domain Services, and Entra Kerberos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(14)">
+                    <div class="flashcard" id="flashcard14">
+                        <div class="front">
+                            <p>What is the purpose of soft delete in Azure Files?</p>
+                        </div>
+                        <div class="back">
+                            <p>Soft delete allows recovery of accidentally deleted file shares.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(15)">
+                    <div class="flashcard" id="flashcard15">
+                        <div class="front">
+                            <p>How can you increase the performance of NFS Azure file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Use the `nconnect` Linux mount option for more TCP connections.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(16)">
+                    <div class="flashcard" id="flashcard16">
+                        <div class="front">
+                            <p>What is the function of Azure Backup for Azure file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Backup provides scheduled, policy-driven backups, protecting data from ransomware and data loss.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(17)">
+                    <div class="flashcard" id="flashcard17">
+                        <div class="front">
+                            <p>What is the difference between GPv2 and FileStorage storage accounts?</p>
+                        </div>
+                        <div class="back">
+                            <p>GPv2 hosts multiple storage resources, while FileStorage specializes in premium SSD-based file shares.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(18)">
+                    <div class="flashcard" id="flashcard18">
+                        <div class="front">
+                            <p>How does Azure Files support Active Directory integration?</p>
+                        </div>
+                        <div class="back">
+                            <p>By domain-joining storage accounts to on-premises AD DS or Microsoft Entra Domain Services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(19)">
+                    <div class="flashcard" id="flashcard19">
+                        <div class="front">
+                            <p>What are the supported encryption algorithms for SMB channel encryption?</p>
+                        </div>
+                        <div class="back">
+                            <p>Supported algorithms include AES-256-GCM, AES-128-GCM, and AES-128-CCM.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-box" onclick="flipCard(20)">
+                    <div class="flashcard" id="flashcard20">
+                        <div class="front">
+                            <p>How does Azure Files handle disaster recovery and failover for file shares?</p>
+                        </div>
+                        <div class="back">
+                            <p>Azure Files supports GRS and GZRS, allowing failover to a secondary region in case of a disaster.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentFlippedCard = null;
+
+        function flipCard(cardId) {
+            const newCard = document.getElementById('flashcard' + cardId);
+            if (currentFlippedCard && currentFlippedCard !== newCard) {
+                currentFlippedCard.classList.remove('flip');
+            }
+            newCard.classList.toggle('flip');
+            currentFlippedCard = newCard.classList.contains('flip') ? newCard : null;
+        }
+
+        function shuffleFlashcards() {
+            const container = document.getElementById('flashcard-container');
+            const cards = Array.from(container.children);
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        function resetFlashcards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => card.classList.remove('flip'));
+            currentFlippedCard = null;
+        }
+    </script>
+</body>
+
+</html>
