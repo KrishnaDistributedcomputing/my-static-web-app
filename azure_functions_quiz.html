@@ -29,6 +29,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+            position: relative;
         }
 
         .header {
@@ -44,6 +45,14 @@
             font-size: 1rem;
             margin: 0;
             flex: 1;
+        }
+
+        .visitor-counter {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.75rem;
+            color: #0077B5;
         }
 
         .question {
@@ -74,7 +83,7 @@
 
         .btn-container {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             width: 100%;
             margin-top: 15px;
         }
@@ -116,6 +125,9 @@
     <div class="quiz-container">
         <div class="header">
             <h4>Azure Functions Quiz</h4>
+        </div>
+        <div class="visitor-counter">
+            Visitors: <span id="visitorCount"></span>
         </div>
         <form id="quizForm">
             <div class="question" data-answer="Running serverless applications">
@@ -231,6 +243,7 @@
             <div class="btn-container" id="btn-container">
                 <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
                 <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+                <a href="#" id="linkedin-share" class="btn btn-info btn-sm">Share on LinkedIn</a>
             </div>
         </form>
         <p id="result"></p>
@@ -271,11 +284,11 @@
                     const link = {
                         "Running serverless applications": "https://learn.microsoft.com/en-us/azure/azure-functions/",
                         "Ruby": "https://learn.microsoft.com/en-us/azure/azure-functions/supported-languages",
-                        "Consumption plan": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
+                        "Consumption plan": "https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan-hosting",
                         "10 minutes": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale#timeout",
                         "Timer Trigger": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=csharp",
                         "Container Apps": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-function-linux-custom-image",
-                        "Function chaining": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-sequence",
+                        "Function chaining": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-sequence-tutorial",
                         "Stateful workflows": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
                         "Always warm instances": "https://azure.microsoft.com/en-us/pricing/details/functions/",
                         "Azure Monitor": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview"
@@ -300,6 +313,29 @@
                 feedback.textContent = '';
             });
             document.getElementById('result').textContent = '';
+        });
+
+        // LinkedIn Share Button
+        document.getElementById('linkedin-share').addEventListener('click', function () {
+            const url = encodeURIComponent("https://www.azurekt.com/azure_functions_quiz.html");
+            const text = encodeURIComponent("Check out this Azure Functions Quiz!");
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${text}`;
+            window.open(linkedinUrl, '_blank');
+        });
+
+        // Visitor Counter
+        document.addEventListener('DOMContentLoaded', function () {
+            const visitorCountElement = document.getElementById('visitorCount');
+
+            // Simple counter using localStorage (for demonstration purposes)
+            let visitorCount = localStorage.getItem('visitorCount');
+            if (!visitorCount) {
+                visitorCount = 0;
+            }
+            visitorCount = parseInt(visitorCount) + 1;
+            localStorage.setItem('visitorCount', visitorCount);
+
+            visitorCountElement.textContent = visitorCount;
         });
     </script>
 </body>
