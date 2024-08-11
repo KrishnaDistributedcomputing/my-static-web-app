@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Azure Functions Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9 10%, #B5FFFC 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            font-size: 0.75rem;
+            padding: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .share-icon {
+            font-size: 1.5rem;
+            color: #0077B5;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .feedback {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback a {
+            margin-left: 10px;
+            font-size: 0.75rem;
+        }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h4>Azure Functions Quiz</h4>
+        </div>
+        <form id="quizForm">
+            <div class="question" data-answer="b">
+                <label>1. What is Azure Functions primarily used for?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Building mobile applications</option>
+                    <option value="b">Running serverless applications</option>
+                    <option value="c">Managing SQL databases</option>
+                    <option value="d">Hosting virtual machines</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>2. Which of the following languages is NOT supported by Azure Functions natively?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Python</option>
+                    <option value="b">JavaScript</option>
+                    <option value="c">Ruby</option>
+                    <option value="d">C#</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>3. What Azure Functions plan should you choose for event-driven scaling and minimal costs?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Premium plan</option>
+                    <option value="b">Dedicated plan</option>
+                    <option value="c">Consumption plan</option>
+                    <option value="d">Flex plan</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>4. In Azure Functions, what is the default maximum execution timeout for the Consumption plan?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">10 minutes</option>
+                    <option value="b">30 minutes</option>
+                    <option value="c">60 minutes</option>
+                    <option value="d">Unlimited</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>5. Which trigger is commonly used to run Azure Functions based on a schedule?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">HTTP Trigger</option>
+                    <option value="b">Event Grid Trigger</option>
+                    <option value="c">Timer Trigger</option>
+                    <option value="d">Blob Trigger</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="d">
+                <label>6. Which Azure Functions hosting option allows for the use of custom Linux containers?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Consumption plan</option>
+                    <option value="b">Premium plan</option>
+                    <option value="c">Flex plan</option>
+                    <option value="d">Container Apps</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="c">
+                <label>7. Which Azure Functions pattern is used for executing a sequence of functions in a specific order?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Fan-out/fan-in</option>
+                    <option value="b">Async HTTP APIs</option>
+                    <option value="c">Function chaining</option>
+                    <option value="d">Monitor pattern</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>8. What is the primary advantage of using Durable Functions in Azure?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Lower cost</option>
+                    <option value="b">Stateful workflows</option>
+                    <option value="c">Faster execution time</option>
+                    <option value="d">Better language support</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="a">
+                <label>9. Which of the following is a key benefit of the Flex Consumption plan?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Always warm instances</option>
+                    <option value="b">Unlimited free executions</option>
+                    <option value="c">No support for virtual networking</option>
+                    <option value="d">Fixed scaling behavior</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="question" data-answer="b">
+                <label>10. Which feature of Azure Functions helps in debugging and monitoring the execution of functions?</label>
+                <select class="form-control">
+                    <option value="" selected disabled>Select an answer</option>
+                    <option value="a">Azure Defender</option>
+                    <option value="b">Azure Monitor</option>
+                    <option value="c">Azure Policy</option>
+                    <option value="d">Azure Virtual Network</option>
+                </select>
+                <p class="feedback"></p>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button type="button" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" id="clear" class="btn btn-secondary btn-sm">Clear Answers</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        const showQuestions = () => {
+            const questions = document.querySelectorAll('.question');
+            const screenWidth = window.innerWidth;
+            const isMobile = screenWidth <= 768;
+
+            questions.forEach((question, index) => {
+                if (isMobile && index >= 5) {
+                    question.style.display = 'none';
+                } else {
+                    question.style.display = 'block';
+                }
+            });
+        };
+
+        window.addEventListener('resize', showQuestions);
+        window.addEventListener('load', showQuestions);
+
+        document.getElementById('submit').addEventListener('click', function () {
+            const questions = Array.from(document.querySelectorAll('.question')).filter(q => q.style.display !== 'none');
+            let score = 0;
+
+            questions.forEach((question) => {
+                const selectElement = question.querySelector('select');
+                const selectedOption = selectElement.value;
+                const correctAnswer = question.getAttribute('data-answer');
+                const feedback = question.querySelector('.feedback');
+
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    feedback.innerHTML = `Correct! The correct answer is ${correctAnswer}.`;
+                    feedback.className = 'feedback correct-answer';
+                } else {
+                    feedback.innerHTML = `Incorrect. The correct answer is ${correctAnswer}. Learn more <a href="https://learn.microsoft.com/en-us/azure/backup/multi-user-authorization" target="_blank">here</a>.`;
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                selectElement.style.display = 'none';
+            });
+
+            document.getElementById('result').textContent = `You got ${score} out of ${questions.length} correct!`;
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+                select.style.display = 'block';
+            });
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.textContent = '';
+            });
+            document.getElementById('result').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
